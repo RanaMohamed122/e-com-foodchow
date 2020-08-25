@@ -124,7 +124,7 @@
                                                         <div class="user-info-inner">
                                                             <h5 itemprop="headline"><a href="#" title="" itemprop="url">{{$user->name}}</a></h5>
                                                             <span><a href="#" title="" itemprop="url">{{$user->email}}</a></span>
-                                                            <a class="brd-rd3 sign-out-btn yellow-bg" href="#" title="" itemprop="url"><i class="fa fa-sign-out"></i> SIGN OUT</a>
+                                                            <!--<a class="brd-rd3 sign-out-btn yellow-bg" href="{" title="" itemprop="url"><i class="fa fa-sign-out"></i> SIGN OUT</a>-->>
                                                         </div>
                                                     </div>
                                                     <ul class="nav nav-tabs">
@@ -215,22 +215,23 @@
                                                 <div class="tab-pane fade" id="my-reviews">
                                                     <div class="tabs-wrp brd-rd5">
                                                         <h4 itemprop="headline">MY REVIEWS</h4>
-                                                        <div class="select-wrap-inner">
-                                                            <div class="select-wrp2">
-                                                                <select>
-                                                                    <option>Newest Reviews</option>
-                                                                    <option>Newest Reviews</option>
-                                                                    <option>Newest Reviews</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="select-wrp2">
-                                                                <select>
-                                                                    <option>Select Date Range</option>
-                                                                    <option>Select Date Range</option>
-                                                                    <option>Select Date Range</option>
-                                                                </select>
+                                                        @foreach ($reviews as $review)
+                                                        <div class="review-list">
+                                                            <div class="review-box brd-rd5">
+                                                                <h4 itemprop="headline"><a href="#" title="" itemprop="url">{{$review->project_name}}</a></h4>
+                                                                <div class="ratings">
+                                                                    <i class="fa fa-star on"></i>
+                                                                    <i class="fa fa-star on"></i>
+                                                                    <i class="fa fa-star on"></i>
+                                                                    <i class="fa fa-star off"></i>
+                                                                    <i class="fa fa-star off"></i>
+                                                                </div>
+                                                                <br>
+                                                                <p itemprop="description"> {{$review->review}}</p>
                                                             </div>
                                                         </div>
+                                                        @endforeach
+                                                        <!--
                                                         <div class="review-list">
                                                             <div class="review-box brd-rd5">
                                                                 <h4 itemprop="headline"><a href="#" title="" itemprop="url">DISH DEMO</a></h4>
@@ -286,7 +287,9 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                            </div>
+                                                        -->
+                                                        
                                                         <!-- Review List -->
                                                     </div>
                                                 </div>
@@ -466,10 +469,11 @@
                                                             </div>
                                                         </div>
                                                         <div class="statement-table">
+                                                            @if (!(empty(Auth::user()->id)))
                                                             <table>
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>TRANSACTION ID</th>
+                                                                        <!--<th>TRANSACTION ID</th>-->
                                                                         <th>ORDER ID</th>
                                                                         <th>DATE</th>
                                                                         <th>DETAIL</th>
@@ -477,43 +481,38 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
+                                                                    @foreach ($userOrders as $userOrder)
                                                                     <tr>
-                                                                        <td>#30737723</td>
-                                                                        <td>8720</td>
-                                                                        <td>Aug 17,2017</td>
-                                                                        <td>Order - items</td>
-                                                                        <td><span class="red-clr">$35.97</span></td>
+                                                                        <td>{{$userOrder->id}}</td>
+                                                                        <td>{{$userOrder->created_at}}</td>
+                                                                        <td style="text-align: left">
+                                                                        @foreach ($orderItems as $orderItem)
+                                                                            @if ($orderItem->order_id == $userOrder->id)
+                                                                                {{$orderItem->product_name}}<br> 
+                                                                            @endif
+                                                                        @endforeach
+                                                                        </td>
+                                                                        <td><span class="red-clr">{{$userOrder->total + $userOrder->delivery_fees}} L.E.</span></td>
                                                                     </tr>
-                                                                    <tr>
-                                                                        <td>#30737723</td>
-                                                                        <td>8720</td>
-                                                                        <td>Aug 17,2017</td>
-                                                                        <td>Order - items</td>
-                                                                        <td><span class="red-clr">$35.97</span></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>#30737723</td>
-                                                                        <td>8720</td>
-                                                                        <td>Aug 17,2017</td>
-                                                                        <td>Order - items</td>
-                                                                        <td><span class="red-clr">$35.97</span></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>#30737723</td>
-                                                                        <td>8720</td>
-                                                                        <td>Aug 17,2017</td>
-                                                                        <td>Order - items</td>
-                                                                        <td><span class="red-clr">$35.97</span></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>#30737723</td>
-                                                                        <td>8720</td>
-                                                                        <td>Aug 17,2017</td>
-                                                                        <td>Order - items</td>
-                                                                        <td><span class="red-clr">$35.97</span></td>
-                                                                    </tr>
+                                                                    @endforeach
+                                                                    
                                                                 </tbody>
-                                                            </table>
+                                                            </table> 
+                                                            @else{
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <!--<th>TRANSACTION ID</th>-->
+                                                                            <th>ORDER ID</th>
+                                                                            <th>DATE</th>
+                                                                            <th>DETAIL</th>
+                                                                            <th>AMOUNT</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                </table> 
+                                                            }
+                                                            @endif
+                                                            
                                                         </div>
                                                         <!-- Statement Table -->
                                                         <div class="pagination-wrapper text-center style2">

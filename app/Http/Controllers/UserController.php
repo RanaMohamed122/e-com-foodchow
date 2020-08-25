@@ -3,8 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Input;
 use App\User;
+use App\Category;
+use App\Product;
+use App\Chef;
+use App\Cart;
+use App\Order;
+use App\OrderItem;
+use App\Review;
+use Math;
+use Image;
+use Auth;
+use Session;
+use DB;
+
 
 
 class UserController extends Controller
@@ -13,10 +26,19 @@ class UserController extends Controller
     {
         //
 
-        $user_id = Auth::user()->id;
-        $user = User::find($user_id);
+        //$user_id = Auth::user()->id;
+        //$user = User::find($user_id);
 
-        return view('UserProfile')->with('user',$user);
+        $user = '';
+        if(!empty(Auth::user()->id)){
+            $user = User::find( Auth::user()->id);
+        }
+
+        $userOrders = $user->orders;
+       // $reviews = Review::all();
+
+        $orderItems = OrderItem::all();
+        return view('UserProfile')->with('user',$user)->with('userOrders',$userOrders)->with('orderItems',$orderItems)->with('reviews',$user->reviews);
     }
 
     public function addUserInfo(Request $request)
@@ -56,4 +78,15 @@ class UserController extends Controller
 
         return view('UserProfile')->with('user',$user);
     }
+
+    public function ViewUserProfile(){
+
+        $user = '';
+        if(!empty(Auth::user()->id)){
+            $user = User::find( Auth::user()->id);
+        }
+
+        return view('UserProfile')->with('userOrders',$user->orders);
+    }
+
 }

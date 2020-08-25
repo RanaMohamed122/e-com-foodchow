@@ -30,7 +30,7 @@
             <table class="table table-bordered data-table">
               <thead>
                 <tr>
-                  <<th>Chefs ID</th>
+                  <th>Chefs ID</th>
                   <th>Category ID</th>
                   <th>Category Name</th>
                   <th>Project Name</th>

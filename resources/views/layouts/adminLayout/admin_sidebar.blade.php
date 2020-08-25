@@ -12,6 +12,8 @@
       <ul>
         <li><a href="{{ url('/admin/add-chef')}}">Add Chef</a></li>
         <li><a href="{{ url('/admin/view-chef')}}">View Chef</a></li>
+        <li><a href="{{ url('/admin/add-chef-blog')}}">Add Chef Blog</a></li>
+        <li><a href="{{ url('/admin/view-chef-blog')}}">View Chef Blog</a></li>
       </ul>
     </li>
      <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Products</span> <span class="label label-important">2</span></a>

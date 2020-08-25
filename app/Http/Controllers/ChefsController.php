@@ -9,6 +9,7 @@ use Session;
 use Image;
 use App\Category;
 use App\Chef;
+use App\ChefBlog;
 use DB;
 
 
@@ -69,6 +70,7 @@ class ChefsController extends Controller
     	}
     	return view('admin.Chefs.add_chef')->with(compact('categories_dropdown'));
 	}
+
 	
 	public function viewChefs(){
         $chefs = Chef::get();
@@ -150,12 +152,97 @@ public function editChef(Request $request,$id=null){
 	// Categories drop down end //
 
 	return view('admin.chefs.edit_chef')->with(compact('chefDetails','categories_drop_down'));
-} 
+	} 
 
-public function deleteChef($id = null){
-	Chef::where(['id'=>$id])->delete();
-	return redirect()->back()->with('flash_message_success', 'Chef has been deleted successfully');
+	public function deleteChef($id = null){
+		Chef::where(['id'=>$id])->delete();
+		return redirect()->back()->with('flash_message_success', 'Chef has been deleted successfully');
+	}
+
+	//Blog////////////////////////////////////////////////////////////////////////////////////////////////
+	public function addChefBlog(Request $request){
+
+    	if($request->isMethod('post')){
+    		$data = $request->all();
+			
+            $chefBlog = new ChefBlog;
+            $chefBlog->chef_id = $data['chef_id'];
+            $chefBlog->project_name = $data['project_name'];
+    		$chefBlog->blog_title = $data['blog_title'];
+            $chefBlog->blog_brief = $data['blog_brief'];
+            $chefBlog->blog_body = $data['blog_body'];    
+
+    		// Upload Image
+    		if($request->hasFile('image')){
+            	$image_tmp = Input::file('image');
+                if ($image_tmp->isValid()) {
+                    // Upload Images after Resize
+                    $extension = $image_tmp->getClientOriginalExtension();
+	                $fileName = rand(111,99999).'.'.$extension;
+                    $image_path = 'assets/images/resource'.'/'.$fileName;
+                    
+	                Image::make($image_tmp)->save($image_path);
+ 				
+     				$chefBlog->image = $fileName; 
+				}
+			}
+			$chefBlog->save();
+			return redirect()->back()->with('flash_message_success','Chefs Blogs has been added successfully!');
+
+    		/*return redirect()->back()->with('flash_message_success','Product has been added successfully!');*/
+    	}
+    	//return redirect()->back()->with('flash_message_success','Chefs Blogs has been added successfully!');
+
+		return view('admin.Chefs.add_chef_blog')->with('flash_message_success','Chef has been added successfully!');
+	}
+
+	public function viewChefsBlogs(){
+        $chefsBlogs = ChefBlog::get();
+        $chefsBlogs = json_decode(json_encode($chefsBlogs));
+    	
+        return view('admin.Chefs.view_chef_blogs')->with(compact('chefsBlogs'));
+	}
+
+	public function editChefBlog(Request $request,$id=null){
+
+		if($request->isMethod('post')){
+			$data = $request->all();	
+	
+			// Upload Image
+    		if($request->hasFile('image')){
+            	$image_tmp = Input::file('image');
+                if ($image_tmp->isValid()) {
+                    // Upload Images after Resize
+                    $extension = $image_tmp->getClientOriginalExtension();
+	                $fileName = rand(111,99999).'.'.$extension;
+                    $image_path = 'assets/images/resource'.'/'.$fileName;
+                    
+	                Image::make($image_tmp)->save($image_path);
+ 				
+     				$chefBlog->image = $fileName; 
+				}
+			}else if(!empty($data['current_image'])){
+					$fileName = $data['current_image'];
+			}else{
+					$fileName = '';
+			}
+			
+
+			ChefBlog::where(['id'=>$id])->update(['chef_id'=>$data['chef_id'],'project_name'=>$data['project_name'],
+				'blog_title'=>$data['blog_title'],'blog_brief'=>$data['blog_brief'],'blog_body'=>$data['blog_body'],'image'=>$fileName]);
+			
+			return redirect()->back()->with('flash_message_success', 'Chef Blog has been edited successfully');
+		}
+	
+		// Get Product Details start //
+		$chefBlogDetails = ChefBlog::where(['id'=>$id])->first();
+
+		return view('admin.chefs.edit_chef_blog')->with(compact('chefBlogDetails'));
+	} 
+
+	public function deleteChefBlog($id){
+		ChefBlog::where(['id'=>$id])->delete();
+		return redirect()->back()->with('flash_message_success', 'Chef Bllog has been deleted successfully');
+	}
 }
-
- }
 

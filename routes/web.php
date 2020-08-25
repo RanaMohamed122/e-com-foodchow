@@ -34,6 +34,8 @@ Route::get('/chefs_products', function() {
     return view('chefs_products');
 });
 
+Route::get('/chefBlogs', 'ChefBlogsController@viewBlogs');
+
 Route::match(['get','post'],'/cart', 'CategoriesController@ViewCart');
 Route::match(['get', 'post'], '/admin','AdminController@login');
 Route::get( '/reg',function () {
@@ -82,11 +84,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('/admin/view-chef','ChefsController@viewChefs'); 
 	Route::match(['get','post'],'/admin/edit-chef/{id}','ChefsController@editChef');   
 	Route::get('/admin/delete-chef/{id}','ChefsController@deleteChef');
+	Route::match(['get','post'],'/admin/add-chef-blog','ChefsController@addChefBlog');
+	Route::get('/admin/view-chef-blog','ChefsController@viewChefsBlogs'); 
+	Route::match(['get','post'],'/admin/edit-chef-blog/{id}','ChefsController@editChefBlog');   
+	Route::get('/admin/delete-chef-blog/{id}','ChefsController@deleteChefBlog');
 
 //});
 
 	// users Routes
+	Route::group(['middleware' => ['auth']],function(){
 	Route::get('UserProfile','UserController@UserInfo');
+	});
 
 	Route::match(['get','post'],'addUserInfo','UserController@addUserInfo');   
 

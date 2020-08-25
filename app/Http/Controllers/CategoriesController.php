@@ -70,37 +70,7 @@ class CategoriesController extends Controller
         $session_id = str_random(40);
         Session::put('session_id',$session_id);
         }  
-        //$q=0;
-       // $carts = Cart::where(['session_id' => $session_id])->get();
-        /*
-        if(Cart::all()->count() == 0){
-            if(empty(Auth::user()->email)){
-                DB::table('cart')->insert(['product_id' => $product->id, 'product_name' => $product->product_name, 'description'=> $product->description, 'price'=>$product->price,'user_email' => ' ', 'session_id' => $session_id, 'quantity' => '1']);
-            }else{
-                DB::table('cart')->insert(['product_id' => $product->id, 'product_name' => $product->product_name, 'description'=> $product->description, 'price'=>$product->price,'user_email' => Auth::user()->email, 'session_id' => $session_id, 'quantity' => '1']);
-            }
-        }elseif(DB::table('cart')->where(['session_id' => $session_id])->count() > 0){
-            foreach($carts as $cart){
-                if($cart->product_id == $product->id){   
-                    echo 'console.log("hi")';
-                    $cart->quantity +=1;
-                    $cart->save();
-                }
-                else{    
-                    echo 'console.log("hi2")';
-           
-                    if(empty(Auth::user()->email)){
-                        DB::table('cart')->insert(['product_id' => $product->id, 'product_name' => $product->product_name, 'description'=> $product->description, 'price'=>$product->price,'user_email' => ' ', 'session_id' => $session_id, 'quantity' => '1']);
-                    }else{
-                        DB::table('cart')->insert(['product_id' => $product->id, 'product_name' => $product->product_name, 'description'=> $product->description, 'price'=>$product->price,'user_email' => Auth::user()->email, 'session_id' => $session_id, 'quantity' => '1']);
-                    }
-                }
-                
 
-            }
-        }
-
-        */
         if(Cart::all()->count() == 0){
             if(empty(Auth::user()->email)){
                 DB::table('cart')->insert(['product_id' => $product->id, 'product_name' => $product->product_name, 'description'=> $product->description, 'price'=>$product->price,'user_email' => ' ', 'session_id' => $session_id, 'quantity' => '1']);
@@ -108,20 +78,27 @@ class CategoriesController extends Controller
                 DB::table('cart')->insert(['product_id' => $product->id, 'product_name' => $product->product_name, 'description'=> $product->description, 'price'=>$product->price,'user_email' => Auth::user()->email, 'session_id' => $session_id, 'quantity' => '1']);
             }
         }elseif(Cart::all()->count() > 0){
-            if(Cart::where(['product_id' => $product->id])->count() > 0){
-                $cart = Cart::where(['product_id' => $product->id])->first();
-                $cart->quantity +=1;
-                $cart->save();
-            }else{
-                if(empty(Auth::user()->email)){
-                    DB::table('cart')->insert(['product_id' => $product->id, 'product_name' => $product->product_name, 'description'=> $product->description, 'price'=>$product->price,'user_email' => ' ', 'session_id' => $session_id, 'quantity' => '1']);
+            if(!(empty(Auth::user()->email))){
+                if(Cart::where(['user_email'=> Auth::user()->email])->where(['product_id' => $product->id])->count() > 0){
+                    $cart = Cart::where(['user_email'=> Auth::user()->email])->where(['product_id'=> $product->id])->first();
+                    $cart->quantity +=1;
+                    $cart->save();
                 }else{
                     DB::table('cart')->insert(['product_id' => $product->id, 'product_name' => $product->product_name, 'description'=> $product->description, 'price'=>$product->price,'user_email' => Auth::user()->email, 'session_id' => $session_id, 'quantity' => '1']);
                 }
-            }
+            }elseif(empty(Auth::user()->email)){
+                if(Cart::Where(['session_id' => Session::get('session_id')])->where(['product_id' => $product->id])->count() > 0){
+                    $cart = Cart::where(['session_id'=> Session::get('session_id')])->where(['product_id'=> $product->id])->first();
+                    $cart->quantity +=1;
+                    $cart->save();
+                }else{
+                    DB::table('cart')->insert(['product_id' => $product->id, 'product_name' => $product->product_name, 'description'=> $product->description, 'price'=>$product->price,'user_email' => ' ', 'session_id' => $session_id, 'quantity' => '1']);
+                   
+                }
+            }                  
+            
         }
        
-
        
         return redirect()->back();
     }
@@ -213,6 +190,7 @@ class CategoriesController extends Controller
 
             $cart_pros = DB::table('cart')->where('user_email', $user->email)->get();
 
+            $order->user_id = $user->id;
             $order->user_name = $user->name;
             $order->user_email = $user->email;
             $order->phone = $user->phone;	
@@ -236,11 +214,17 @@ class CategoriesController extends Controller
             
         $order->total = $total;	
         $order->description	= '';
-        $order->deliver_fees = 50;
+        $order->delivery_fees = 50;
         $order->payment_method = 'cash';
 
         $order->save();
 
+        if(!(empty(Auth::user()->id))){
+            DB::table('cart')->where('user_email', $user->email)->delete();
+        }elseif(empty(Auth::user()->id)){
+            DB::table('cart')->where('session_id', Session::get('session_id'))->delete();
+        }
+        
         return view('ThankYou');    
     }
     
