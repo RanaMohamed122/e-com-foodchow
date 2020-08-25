@@ -55,16 +55,13 @@
 
                                 <ul class="dropdown-menu" style="min-width:10px; margin-left:-8%">
                                     <li>
-<<<<<<< HEAD
                                         <a href="{{ url('UserProfile') }}">
                                             Profile
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('logout') }}"
-=======
+                                        
                                         <a href="{{ route('logout') }}" style="background-color: snow;font-weight: 500;"
->>>>>>> 80e31466f687eb83617b54fb075d31f852146a9e
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
@@ -84,7 +81,7 @@
                     </div>
                 </div>                
             </div><!-- Topbar -->
-            <div class="logo-menu-sec" style="margin-left: 10%;">
+            <div class="logo-menu-sec" >
               <div class="container">
                     <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="assets/images/logo2.png" alt="logo.png" itemprop="image"></a></h1></div>
                     <nav>

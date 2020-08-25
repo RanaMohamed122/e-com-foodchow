@@ -33,11 +33,11 @@ class RedirectIfAuthenticated
 
         if (Auth::guard($guard)->check()) {
             return redirect('/home');
-        }else{
-            return redirect('/');
-        }
+        }//else{
+            //return redirect('/');
+        //}
 
-        //return $next($request);
+        return $next($request);
     }
 
 }
