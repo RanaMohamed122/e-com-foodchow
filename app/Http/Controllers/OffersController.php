@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use App\Category;
+use DB;
 
 class OffersController extends Controller
 {
@@ -13,7 +16,9 @@ class OffersController extends Controller
      */
     public function index()
     {
-        return view('offers');
+        $categories = Category::all();
+    	//$categories = json_decode(json_encode($categories));
+        return view('offers')->with('categories',$categories);
     }
 
     /**

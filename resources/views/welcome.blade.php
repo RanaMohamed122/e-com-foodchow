@@ -53,9 +53,9 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu" style="min-width:10px; margin-left:-8%">
                                     <li>
-                                        <a href="{{ route('logout') }}"
+                                        <a href="{{ route('logout') }}" style="background-color: snow;font-weight: 500;"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
@@ -69,15 +69,14 @@
                             </li>
                         @endif
                     </div>
-                    <div class="social1">
-                        <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
-                        <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
+                    <div class="social1" style="margin-top: 5px;width: 3%;margin-right: -5%;">
+                        <a href="{{asset("/cart")}}" title="Facebook" itemprop="url" target="_blank"><img src="assets/images/icon3.png"></a>
+                       
                     </div>
                 </div>                
             </div><!-- Topbar -->
-            <div class="logo-menu-sec">
-                <div class="container">
+            <div class="logo-menu-sec" style="margin-left: 10%;">
+              <div class="container">
                     <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="assets/images/logo2.png" alt="logo.png" itemprop="image"></a></h1></div>
                     <nav>
                         <div class="menu-sec">
@@ -89,190 +88,26 @@
                                     </ul> 
                                 </li>
                                 <li class="menu-item-has-children"><a href={{asset("/services")}} title="RESTAURANTS" itemprop="url">Our Services</a>
-                                  <!--  <ul class="sub-dropdown">
-                                        <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
-                                        <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
-                                        <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
-                                        <li><a href="food-recipes.html" title="RESTAURANT DETAILS" itemprop="url">FOOD RECIPES</a></li>
-                                        <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
-                                        <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
-                                        <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
-                                    </ul> -->
+                                 
                                 </li>
                                 <li class="menu-item-has-children"><a href={{asset("/categories")}} title="PAGES" itemprop="url">All Categoires</a>
-                                  <!--  <ul class="sub-dropdown">
-                                        <li class="menu-item-has-children"><a href="#" title="BLOG" itemprop="url">BLOG</a>
-                                            <ul class="sub-dropdown">
-                                                <li class="menu-item-has-children"><a href="#" title="BLOG LAYOUTS" itemprop="url">BLOG LAYOUTS</a>
-                                                    <ul class="sub-dropdown">
-                                                        <li><a href="blog-right-sidebar.html" title="BLOG WITH RIGHT SIDEBAR" itemprop="url">BLOG (W.R.S)</a></li>
-                                                        <li><a href="blog-left-sidebar.html" title="BLOG WITH LEFT SIDEBAR" itemprop="url">BLOG (W.L.S)</a></li>
-                                                        <li><a href="blog.html" title="BLOG WITH NO SIDEBAR" itemprop="url">BLOG</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item-has-children"><a href="#" title="BLOG DETAIL" itemprop="url">BLOG DETAIL</a>
-                                                    <ul class="sub-dropdown">
-                                                        <li><a href="blog-detail-right-sidebar.html" title="BLOG DETAIL WITH RIGHT SIDEBAR" itemprop="url">BLOG DETAIL (W.R.S)</a></li>
-                                                        <li><a href="blog-detail-left-sidebar.html" title="BLOG DETAIL WITH LEFT SIDEBAR" itemprop="url">BLOG DETAIL (W.L.S)</a></li>
-                                                        <li><a href="blog-detail.html" title="BLOG DETAIL WITH NO SIDEBAR" itemprop="url">BLOG DETAIL</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item-has-children"><a href="#" title="BLOG FORMATES" itemprop="url">BLOG FORMATES</a>
-                                                    <ul class="sub-dropdown">
-                                                        <li><a href="blog-detail-video.html" title="BLOG DETAIL WITH VIDEO" itemprop="url">BLOG DETAIL (VIDEO)</a></li>
-                                                        <li><a href="blog-detail-audio.html" title="BLOG DETAIL WITH AUDIO" itemprop="url">BLOG DETAIL (AUDIO)</a></li>
-                                                        <li><a href="blog-detail-carousel.html" title="BLOG DETAIL WITH CAROUSEL" itemprop="url">BLOG DETAIL (CAROUSEL)</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#" title="SPECIAL PAGES" itemprop="url">SPECIAL PAGES</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="404.html" title="404 ERROR" itemprop="url">404 ERROR</a></li>
-                                                <li><a href="search-found.html" title="SEARCH FOUND" itemprop="url">SEARCH FOUND</a></li>
-                                                <li><a href="search-not-found.html" title="SEARCH NOT FOUND" itemprop="url">SEARCH NOT FOUND</a></li>
-                                                <li><a href="coming-soon.html" title="COMING SOON" itemprop="url">COMING SOON</a></li>
-                                                <li><a href="login-register.html" title="LOGIN & REGISTER" itemprop="url">LOGIN & REGISTER</a></li>
-                                                <li><a href="price-table.html" title="PRICE TABLE" itemprop="url">PRICE TABLE</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#" title="GALLERY" itemprop="url">GALLERY</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="gallery.html" title="FOOD GALLERY" itemprop="url">FOOD GALLERY</a></li>
-                                                <li><a href="gallery-detail.html" title="GALLERY DETAIL" itemprop="url">GALLERY DETAIL</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="register-reservation.html" title="REGISTER RESERVATION" itemprop="url">REGISTER RESERVATION</a></li>
-                                        <li><a href="how-it-works.html" title="HOW IT WORKS" itemprop="url">HOW IT WORKS</a></li>
-                                        <li><a href="dashboard.html" title="USER PROFILE" itemprop="url">USER PROFILE</a></li>
-                                        <li><a href="about-us.html" title="ABOUT US" itemprop="url">ABOUT US</a></li>
-                                        <li><a href="food-detail.html" title="FOOD DETAIL" itemprop="url">FOOD DETAIL</a></li>
+                                   
+                                    <ul >
+                                        @foreach($categories as $category)
+                                    <li><a href="{{ url('/categories/products_found/'.$category->id) }}" title="" itemprop="url">{{$category->name}}</a> </li>
+                                        @endforeach
                                     </ul>
-                                </li> -->
                                 <li><a href={{asset("/contact-us")}} title="CONTACT US" itemprop="url">Contact Us</a></li>
                             </ul>
-                            <a class="red-bg brd-rd4" href="register-reservation.html" title="Register" itemprop="url">Register as a Chef</a>
+                            
                         </div>
                     </nav><!-- Navigation -->
                 </div>
-            </div><!-- Logo Menu Section -->
+            </div>
+            <!-- Logo Menu Section -->
         </header><!-- Header -->
 
-        <div class="responsive-header">
-            <div class="responsive-topbar">
-                <div class="select-wrp">
-                    <select data-placeholder="Feel Like Eating">
-                        <option>FEEL LIKE EATING</option>
-                        <option>Burger</option>
-                        <option>Pizza</option>
-                        <option>Fried Rice</option>
-                        <option>Chicken Shots</option>
-                    </select>
-                </div>
-                <div class="select-wrp">
-                    <select data-placeholder="Choose Location">
-                        <option>CHOOSE LOCATION</option>
-                        <option>New york</option>
-                        <option>Washington</option>
-                        <option>Chicago</option>
-                        <option>Los Angeles</option>
-                    </select>
-                </div>
-            </div>
-            <div class="responsive-logomenu">
-                <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="assets/images/logo.png" alt="logo.png" itemprop="image"></a></h1></div>
-                <span class="menu-btn yellow-bg brd-rd4"><i class="fa fa-align-justify"></i></span>
-            </div>
-            <div class="responsive-menu">
-                <span class="menu-close red-bg brd-rd3"><i class="fa fa-close"></i></span>
-                <div class="menu-lst">
-                    <ul>
-                        <li class="menu-item-has-children"><a href="#" title="HOMEPAGES" itemprop="url"><span class="yellow-clr">FOOD ORDERING</span>HOMEPAGES</a>
-                            <ul class="sub-dropdown">
-                                <li><a href="index-2.html" title="HOMEPAGE 1" itemprop="url">HOMEPAGE 1</a></li>
-                                <li><a href="index2.html" title="HOMEPAGE 2" itemprop="url">HOMEPAGE 2</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span class="yellow-clr">REAL FOOD</span>RESTAURANTS</a>
-                            <ul class="sub-dropdown">
-                                <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
-                                <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
-                                <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
-                                <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
-                                <li><a href="food-recipes.html" title="RESTAURANT DETAILS" itemprop="url">FOOD RECIPES</a></li>
-                                <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
-                                <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
-                                <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children"><a href="#" title="PAGES" itemprop="url"><span class="yellow-clr">REAL FOOD</span>PAGES</a>
-                            <ul class="sub-dropdown">
-                                <li class="menu-item-has-children"><a href="#" title="BLOG" itemprop="url">BLOG</a>
-                                    <ul class="sub-dropdown">
-                                        <li class="menu-item-has-children"><a href="#" title="BLOG LAYOUTS" itemprop="url">BLOG LAYOUTS</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="blog-right-sidebar.html" title="BLOG WITH RIGHT SIDEBAR" itemprop="url">BLOG (W.R.S)</a></li>
-                                                <li><a href="blog-left-sidebar.html" title="BLOG WITH LEFT SIDEBAR" itemprop="url">BLOG (W.L.S)</a></li>
-                                                <li><a href="blog.html" title="BLOG WITH NO SIDEBAR" itemprop="url">BLOG</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#" title="BLOG DETAIL" itemprop="url">BLOG DETAIL</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="blog-detail-right-sidebar.html" title="BLOG DETAIL WITH RIGHT SIDEBAR" itemprop="url">BLOG DETAIL (W.R.S)</a></li>
-                                                <li><a href="blog-detail-left-sidebar.html" title="BLOG DETAIL WITH LEFT SIDEBAR" itemprop="url">BLOG DETAIL (W.L.S)</a></li>
-                                                <li><a href="blog-detail.html" title="BLOG DETAIL WITH NO SIDEBAR" itemprop="url">BLOG DETAIL</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#" title="BLOG FORMATES" itemprop="url">BLOG FORMATES</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="blog-detail-video.html" title="BLOG DETAIL WITH VIDEO" itemprop="url">BLOG DETAIL (VIDEO)</a></li>
-                                                <li><a href="blog-detail-audio.html" title="BLOG DETAIL WITH AUDIO" itemprop="url">BLOG DETAIL (AUDIO)</a></li>
-                                                <li><a href="blog-detail-carousel.html" title="BLOG DETAIL WITH CAROUSEL" itemprop="url">BLOG DETAIL (CAROUSEL)</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"><a href="#" title="SPECIAL PAGES" itemprop="url">SPECIAL PAGES</a>
-                                    <ul class="sub-dropdown">
-                                        <li><a href="404.html" title="404 ERROR" itemprop="url">404 ERROR</a></li>
-                                        <li><a href="search-found.html" title="SEARCH FOUND" itemprop="url">SEARCH FOUND</a></li>
-                                        <li><a href="search-not-found.html" title="SEARCH NOT FOUND" itemprop="url">SEARCH NOT FOUND</a></li>
-                                        <li><a href="coming-soon.html" title="COMING SOON" itemprop="url">COMING SOON</a></li>
-                                        <li><a href="login-register.html" title="LOGIN & REGISTER" itemprop="url">LOGIN & REGISTER</a></li>
-                                        <li><a href="price-table.html" title="PRICE TABLE" itemprop="url">PRICE TABLE</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"><a href="#" title="GALLERY" itemprop="url">GALLERY</a>
-                                    <ul class="sub-dropdown">
-                                        <li><a href="gallery.html" title="FOOD GALLERY" itemprop="url">FOOD GALLERY</a></li>
-                                        <li><a href="gallery-detail.html" title="GALLERY DETAIL" itemprop="url">GALLERY DETAIL</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="register-reservation.html" title="REGISTER RESERVATION" itemprop="url">REGISTER RESERVATION</a></li>
-                                <li><a href="how-it-works.html" title="HOW IT WORKS" itemprop="url">HOW IT WORKS</a></li>
-                                <li><a href="dashboard.html" title="USER PROFILE" itemprop="url">USER PROFILE</a></li>
-                                <li><a href="about-us.html" title="ABOUT US" itemprop="url">ABOUT US</a></li>
-                                <li><a href="food-detail.html" title="FOOD DETAIL" itemprop="url">FOOD DETAIL</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="contact.html" title="CONTACT US" itemprop="url"><span class="yellow-clr">REAL FOOD</span>CONTACT US</a></li>
-                    </ul>
-                </div>
-                <div class="topbar-register">
-                    <a class="log-popup-btn" href="#" title="Login" itemprop="url">LOGIN</a> / <a class="sign-popup-btn" href="#" title="Register" itemprop="url">REGISTER</a>
-                </div>
-                <div class="social1">
-                    <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
-                    <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
-                    <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
-                </div>
-                <div class="register-btn">
-                    <a class=" brd-rd4" href="register-reservation.html" title="Register" itemprop="url"> Register as a Chef </a>
-                </div>
-            </div>
-            <!-- Responsive Menu --> 
-        </div>
-        <!-- Responsive Header -->
+       
 
         <section>
             <div class="block">
@@ -280,17 +115,7 @@
                 <div class="restaurant-searching text-center">
                     <div class="restaurant-searching-inner">
                         <h2 itemprop="headline">Order Your <span> Home made </span> Food online </h2>
-                        <form class="restaurant-search-form brd-rd2">
-                            <div class="row mrg10">
-                              
-                                <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
-                                    <div class="input-field brd-rd2"><i class="fa fa-map-marker"></i><input class="brd-rd2" type="text" placeholder="Select Your Location"><i class="fa fa-location-arrow"></i></div>
-                                </div>
-                                <div class="col-md-2 col-sm-3 col-lg-3 col-xs-12">
-                                    <button class="brd-rd2 red-bg" type="submit">SEARCH </button>
-                                </div>
-                            </div>
-                        </form>
+                        
                         <div class="funfacts">
                                 <div class="col-md-3 col-sm-6 col-lg-3">
                                     <div class="fact-box">
@@ -466,24 +291,7 @@
                 </div>
             </div>
         </footer>
-       <!-- <div class="bottom-bar dark-bg text-center">
-            <div class="container">
-                <p itemprop="description"><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>
-            </div>
-        </div> Bottom Bar -->
-
-   <!--     <div class="newsletter-popup-wrapper text-center">
-            <div class="newsletter-popup-inner" style="background-image: url(assets/images/newsletter-bg.jpg);">
-                <a class="close-btn brd-rd50" href="#" title="Close Button" itemprop="url"><i class="fa fa-close"></i></a>
-                <h3 itemprop="headline"><i class="fa fa-envelope-open red-clr"></i> SIGN UP FOR RECENT UPDATES</h3>
-                <p itemprop="description">Join our Subscribers list to get the latest news, updates and special offers delivered directly in your inbox.</p>
-                <form class="newsletter-frm brd-rd30">
-                    <input class="brd-rd30" type="email" placeholder="ENTER YOUR EMAIL">
-                    <button class="brd-rd30 red-bg" type="submit">SUBSCRIBE</button>
-                </form>
-                <span class="red-clr"><i class="fa fa-check"></i> Thanks, your address has been added.</span>
-            </div>
-        </div> Newsletter Popup Wrapper -->
+     
 
         <div class="log-popup text-center">
                 <div class="sign-popup-wrapper brd-rd5">
@@ -491,15 +299,11 @@
                         <a class="log-close-btn" href="#" title="" itemprop="url"><i class="fa fa-close"></i></a>
                         <div class="sign-popup-title text-center">
                             <h4 itemprop="headline">SIGN IN</h4>
-                            <span>with your social network</span>
+                           
                         </div>
-                        <div class="popup-social text-center">
-                            <a class="facebook brd-rd3" href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
-                            <a class="google brd-rd3" href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i> Google</a>
-                            <a class="twitter brd-rd3" href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i> Twitter</a>
-                        </div>
-                        <span class="popup-seprator text-center"><i class="brd-rd50">or</i></span>
-                        <form class="sign-form" method="POST" action="{{ route('login') }}">{{ csrf_field() }}
+                       
+                        <span class="popup-seprator text-center" style="margin: 22px 0;"></span>
+                        <form class="sign-form" style="margin-left: -6%;" method="POST" action="{{ route('login') }}">{{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-lg-12">
                                     <input class="brd-rd3 form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus type="email" id="email" placeholder="Username or Email">
@@ -522,10 +326,7 @@
                                 <div class="col-md-12 col-sm-12 col-lg-12">
                                     <button class="red-bg brd-rd3" type="submit">SIGN IN</button>
                                 </div>
-                                <div class="col-md-12 col-sm-12 col-lg-12">
-                                    <a class="sign-btn" href="#" title="" itemprop="url">Not a member? Sign up</a>
-                                    <a class="recover-btn" href="#" title="" itemprop="url">Recover my password</a>
-                                </div>
+                               
                             </div>
                         </form>
                     </div>
@@ -538,15 +339,12 @@
                         <a class="sign-close-btn" href="#" title="" itemprop="url"><i class="fa fa-close"></i></a>
                         <div class="sign-popup-title text-center">
                             <h4 itemprop="headline">SIGN UP</h4>
-                            <span>with your social network</span>
+                            <span class="popup-seprator text-center" style="margin:22px 0;"></span>
+                        
                         </div>
-                        <div class="popup-social text-center">
-                            <a class="facebook brd-rd3" href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
-                            <a class="google brd-rd3" href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i> Google</a>
-                            <a class="twitter brd-rd3" href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i> Twitter</a>
-                        </div>
-                        <span class="popup-seprator text-center"><i class="brd-rd50">or</i></span>
-                        <form class="sign-form" method="POST" action="{{ route('register') }}">{{ csrf_field() }}    
+                        
+                      
+                        <form class="sign-form" style="margin-left:-6%;" method="POST" action="{{ route('register') }}">{{ csrf_field() }}    
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-lg-12">
                                     <input class="brd-rd3 form-control{{ $errors->has('name') ? ' has-error' : '' }}" id="name" type="text" placeholder="Username" name="name" value="{{ old('name') }}" required autofocus>
@@ -580,10 +378,7 @@
                                 <div class="col-md-12 col-sm-12 col-lg-12">
                                     <button class="red-bg brd-rd3 " style="margin-left: 8%;width: 97%;" type="submit">REGISTER NOW</button>
                                 </div>
-                                <div class="col-md-12 col-sm-12 col-lg-12">
-                                    <a class="sign-btn" href="#" title="" itemprop="url">Already Registered? Sign in</a>
-                                    <a class="recover-btn" href="{{ route('password.request') }}" title="" itemprop="url">Recover my password</a>
-                                </div>
+                               
                             </div>
                         </form>
                     </div>
