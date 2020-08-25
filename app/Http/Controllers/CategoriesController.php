@@ -49,7 +49,7 @@ class CategoriesController extends Controller
     public function ViewChefProduct($id){
 
         //$category_id = category()->id;
-    
+        $categories = Category::all();
         $products = Product::all();
         $chef = Chef::find($id);
 
@@ -58,7 +58,7 @@ class CategoriesController extends Controller
             $reviews = Review::all();
         }
 
-        return view('chefs_products')->with('chef_id',$id)->with('products', $chef->products)->with('reviews', $chef->reviews);
+        return view('chefs_products')->with('chef_id',$id)->with('products', $chef->products)->with('reviews', $chef->reviews)->with('categories',$categories);
 
     }
 
@@ -105,7 +105,7 @@ class CategoriesController extends Controller
 
     
     public function ViewCart(){
-       
+        $categories = Category::all();
         if(Auth::check()){
             $user_email = Auth::user()->email;
             $userCart = DB::table('cart')->where(['user_email' => $user_email])->get();     
@@ -114,7 +114,7 @@ class CategoriesController extends Controller
             $userCart = DB::table('cart')->where(['session_id' => $session_id])->get();    
         }
 
-        return view('cart')->with('cart', $userCart);
+        return view('cart')->with('cart', $userCart)->with('categories',$categories);
     }
 
     public function updateCartQuantity($id=null,$quantity=null){

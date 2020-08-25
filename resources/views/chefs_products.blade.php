@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <title>Food Ordering HTML Template</title>
+    <title>Chef profile</title>
     <link rel="shortcut icon" href={{asset("assets/images/favicon.png")}} type="image/x-icon">
     
 
@@ -19,128 +19,81 @@
 </head>
 <body itemscope>
     <main>
-        <div class="preloader">
-            <div id="cooking">
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div id="area">
-                    <div id="sides">
-                        <div id="pan"></div>
-                        <div id="handle"></div>
-                    </div>
-                    <div id="pancake">
-                        <div id="pastry"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <header class="stick">
-            <div class="topbar">
-                <div class="container">
-                  
-                 
-                    <div class="topbar-register">
-                        <a class="log-popup-btn"  itemprop="url" >LOGIN</a> /
-                        <a class="sign-popup-btn" href="#" title="Register" itemprop="url">REGISTER</a>
-                    </div>
-                    <div class="social1">
-                        <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
-                        <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
-                    </div>
-                </div>                
-            </div><!-- Topbar -->
-            <div class="logo-menu-sec">
-                <div class="container">
-                    <div class="logo"><h1 itemprop="headline"><a href={{asset("/")}} title="Home" itemprop="url"><img src={{asset("assets/images/logo2.png")}} alt="logo.png" itemprop="image"></a></h1></div>
-                    <nav>
-                        <div class="menu-sec">
-                            <ul>
-                                <li class="menu-item-has-children"><a href={{asset("/offers")}} title="HOMEPAGES" itemprop="url">Our Offers</a>
-                                    <ul class="sub-dropdown">
-                                        <li><a href="#" title="HOMEPAGE 1" itemprop="url">Office Packages</a></li>
-                                        <li><a href="#" title="HOMEPAGE 2" itemprop="url">Parties Packages</a></li>
-                                    </ul> 
-                                </li>
-                                <li class="menu-item-has-children"><a href={{asset("/services")}} title="RESTAURANTS" itemprop="url">Our Services</a>
-                                  <!--  <ul class="sub-dropdown">
-                                        <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
-                                        <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
-                                        <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
-                                        <li><a href="food-recipes.html" title="RESTAURANT DETAILS" itemprop="url">FOOD RECIPES</a></li>
-                                        <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
-                                        <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
-                                        <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
-                                    </ul> -->
-                                </li>
-                                <li class="menu-item-has-children"><a href="#" title="PAGES" itemprop="url">All Categoires</a>
-                                    <ul class="sub-dropdown">
-                                        <li class="menu-item-has-children"><a href="#" title="BLOG" itemprop="url">BLOG</a>
-                                            <ul class="sub-dropdown">
-                                                <li class="menu-item-has-children"><a href="#" title="BLOG LAYOUTS" itemprop="url">BLOG LAYOUTS</a>
-                                                    <ul class="sub-dropdown">
-                                                        <li><a href="blog-right-sidebar.html" title="BLOG WITH RIGHT SIDEBAR" itemprop="url">BLOG (W.R.S)</a></li>
-                                                        <li><a href="blog-left-sidebar.html" title="BLOG WITH LEFT SIDEBAR" itemprop="url">BLOG (W.L.S)</a></li>
-                                                        <li><a href="blog.html" title="BLOG WITH NO SIDEBAR" itemprop="url">BLOG</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item-has-children"><a href="#" title="BLOG DETAIL" itemprop="url">BLOG DETAIL</a>
-                                                    <ul class="sub-dropdown">
-                                                        <li><a href="blog-detail-right-sidebar.html" title="BLOG DETAIL WITH RIGHT SIDEBAR" itemprop="url">BLOG DETAIL (W.R.S)</a></li>
-                                                        <li><a href="blog-detail-left-sidebar.html" title="BLOG DETAIL WITH LEFT SIDEBAR" itemprop="url">BLOG DETAIL (W.L.S)</a></li>
-                                                        <li><a href="blog-detail.html" title="BLOG DETAIL WITH NO SIDEBAR" itemprop="url">BLOG DETAIL</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item-has-children"><a href="#" title="BLOG FORMATES" itemprop="url">BLOG FORMATES</a>
-                                                    <ul class="sub-dropdown">
-                                                        <li><a href="blog-detail-video.html" title="BLOG DETAIL WITH VIDEO" itemprop="url">BLOG DETAIL (VIDEO)</a></li>
-                                                        <li><a href="blog-detail-audio.html" title="BLOG DETAIL WITH AUDIO" itemprop="url">BLOG DETAIL (AUDIO)</a></li>
-                                                        <li><a href="blog-detail-carousel.html" title="BLOG DETAIL WITH CAROUSEL" itemprop="url">BLOG DETAIL (CAROUSEL)</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
+            <header class="stick">
+                <div class="topbar">
+                    <div class="container">
+     
+                        <div class="topbar-register">
+                            @if(empty(Auth::user()->id))  
+                                <a class="log-popup-btn"  itemprop="url" >LOGIN</a> /
+                                <a class="sign-popup-btn" href="#" title="Register" itemprop="url">REGISTER</a>
+                            @else                        
+                                <li style="list-style: none;" class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                    </a>
+    
+                                    <ul class="dropdown-menu" style="min-width:10px; margin-left:-8%">
+                                        <li>
+                                            <a href="{{ route('logout') }}" style="background-color: snow;font-weight: 500;"
+                                                onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+    
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
                                         </li>
-                                        <li class="menu-item-has-children"><a href="#" title="SPECIAL PAGES" itemprop="url">SPECIAL PAGES</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="404.html" title="404 ERROR" itemprop="url">404 ERROR</a></li>
-                                                <li><a href="search-found.html" title="SEARCH FOUND" itemprop="url">SEARCH FOUND</a></li>
-                                                <li><a href="search-not-found.html" title="SEARCH NOT FOUND" itemprop="url">SEARCH NOT FOUND</a></li>
-                                                <li><a href="coming-soon.html" title="COMING SOON" itemprop="url">COMING SOON</a></li>
-                                                <li><a href="login-register.html" title="LOGIN & REGISTER" itemprop="url">LOGIN & REGISTER</a></li>
-                                                <li><a href="price-table.html" title="PRICE TABLE" itemprop="url">PRICE TABLE</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#" title="GALLERY" itemprop="url">GALLERY</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="gallery.html" title="FOOD GALLERY" itemprop="url">FOOD GALLERY</a></li>
-                                                <li><a href="gallery-detail.html" title="GALLERY DETAIL" itemprop="url">GALLERY DETAIL</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="register-reservation.html" title="REGISTER RESERVATION" itemprop="url">REGISTER RESERVATION</a></li>
-                                        <li><a href="how-it-works.html" title="HOW IT WORKS" itemprop="url">HOW IT WORKS</a></li>
-                                        <li><a href="dashboard.html" title="USER PROFILE" itemprop="url">USER PROFILE</a></li>
-                                        <li><a href="about-us.html" title="ABOUT US" itemprop="url">ABOUT US</a></li>
-                                        <li><a href="food-detail.html" title="FOOD DETAIL" itemprop="url">FOOD DETAIL</a></li>
                                     </ul>
                                 </li>
-                                <li><a href={{asset("/contact-us")}} title="CONTACT US" itemprop="url">Contact Us</a></li>
-                            </ul>
-                            <a class="red-bg brd-rd4" href="register-reservation.html" title="Register" itemprop="url">Register as a Chef</a>
+                            @endif
                         </div>
-                    </nav><!-- Navigation -->
+                        <div class="social1" style="margin-top: 5px;width: 3%;margin-right: -5%;">
+                            <a href="#" title="Facebook" itemprop="url" target="_blank"><img src={{asset("assets/images/icon3.png")}}></a>
+                           
+                        </div>
+                    </div>                
+                </div><!-- Topbar -->
+                <div class="logo-menu-sec">
+                  <div class="container">
+                        <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src={{asset("assets/images/logo2.png")}} alt="logo.png" itemprop="image"></a></h1></div>
+                        <nav>
+                            <div class="menu-sec">
+                                <ul>
+                                    <li class="menu-item-has-children"><a href={{asset("/offers")}} title="HOMEPAGES" itemprop="url">Our Offers</a>
+                                       <ul class="sub-dropdown">
+                                            <li><a href="#" title="HOMEPAGE 1" itemprop="url">Office Packages</a></li>
+                                            <li><a href="#" title="HOMEPAGE 2" itemprop="url">Parties Packages</a></li>
+                                        </ul> 
+                                    </li>
+                                    <li class="menu-item-has-children"><a href={{asset("/services")}} title="RESTAURANTS" itemprop="url">Our Services</a>
+                                     
+                                    </li>
+                                    <li class="menu-item-has-children"><a href={{asset("/categories")}} title="PAGES" itemprop="url">All Categoires</a>
+                                       
+                                        <ul >
+                                            @foreach($categories as $category)
+                                        <li><a href="{{ url('/categories/products_found/'.$category->id) }}" title="" itemprop="url">{{$category->name}}</a> </li>
+                                            @endforeach
+                                        </ul>
+                                    <li><a href={{asset("/contact-us")}} title="CONTACT US" itemprop="url">Contact Us</a></li>
+                                </ul>
+                                
+                            </div>
+                        </nav><!-- Navigation -->
+                    </div>
                 </div>
-            </div><!-- Logo Menu Section -->
-        </header><!-- Header -->
+               
+               
+                <!-- Logo Menu Section -->
+            </header><!-- Header -->
 
         <div class="bread-crumbs-wrapper" >
             <div class="container">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#" title="" itemprop="url">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#" title="" itemprop="url">Categories</a></li>
+                    <li class="breadcrumb-item"><a href={{asset("/categories")}} title="" itemprop="url">Categories</a></li>
                     <li class="breadcrumb-item">Products</li>
                     <li class="breadcrumb-item active">Profile</li>
                 </ol>
@@ -226,7 +179,7 @@
                                                                     <button type="submit"><i class="fa fa-search"></i></button>
                                                                 </form>
                                                                 <div class="dishes-list-wrapper">
-                                                                    <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Pizza</span></h4>
+                                                                    
                                                                     <ul class="dishes-list">
                                                                      
 
@@ -255,168 +208,13 @@
 
                                                                         
                                                                         @endforeach
-                                                                        <!--
-                                                                        <li class="wow fadeInUp" data-wow-delay="0.1s">
-                                                                            <div class="featured-restaurant-box">
-                                                                                <div class="featured-restaurant-thumb">
-                                                                                    <a href="#" title="" itemprop="url"><img src={{asset("assets/images/resource/dish-img1-1.jpg")}} alt="dish-img1-1.jpg" itemprop="image"></a>
-                                                                                </div>
-                                                                                <div class="featured-restaurant-info">
-                                                                                    <h4 itemprop="headline"><a href="#" title="" itemprop="url">Pizza Takeaway</a></h4>
-                                                                                    <span class="price">$85.00</span>
-                                                                                    <p itemprop="description">Lorem Ipsum is simply dummy text of the printing industry</p>
-                                                                                    <ul class="post-meta">
-                                                                                        <li><i class="fa fa-check-circle-o"></i> Min order $50</li>
-                                                                                        <li><i class="flaticon-transport"></i> 30min</li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <div class="ord-btn">
-                                                                                    <a class="brd-rd2" href="#" title="Order Now" itemprop="url">Order Now</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="wow fadeInUp" data-wow-delay="0.2s">
-                                                                            <div class="featured-restaurant-box">
-                                                                                <div class="featured-restaurant-thumb">
-                                                                                    <a href="#" title="" itemprop="url"><img src={{asset("assets/images/resource/dish-img1-2.jpg")}} alt="dish-img1-2.jpg" itemprop="image"></a>
-                                                                                </div>
-                                                                                <div class="featured-restaurant-info">
-                                                                                    <h4 itemprop="headline"><a href="#" title="" itemprop="url">Extra Cheese Pizza</a></h4>
-                                                                                    <span class="price">$85.00</span>
-                                                                                    <p itemprop="description">Lorem Ipsum is simply dummy text of the printing industry</p>
-                                                                                    <ul class="post-meta">
-                                                                                        <li><i class="fa fa-check-circle-o"></i> Min order $50</li>
-                                                                                        <li><i class="flaticon-transport"></i> 30min</li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <div class="ord-btn">
-                                                                                    <a class="brd-rd2" href="#" title="Order Now" itemprop="url">Order Now</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="wow fadeInUp" data-wow-delay="0.3s">
-                                                                            <div class="featured-restaurant-box">
-                                                                                <div class="featured-restaurant-thumb">
-                                                                                    <a href="#" title="" itemprop="url"><img src={{asset("assets/images/resource/dish-img1-3.jpg")}} alt="dish-img1-3.jpg" itemprop="image"></a>
-                                                                                </div>
-                                                                                <div class="featured-restaurant-info">
-                                                                                    <h4 itemprop="headline"><a href="#" title="" itemprop="url">Pizza Oven Testing Pronto</a></h4>
-                                                                                    <span class="price">$85.00</span>
-                                                                                    <p itemprop="description">Lorem Ipsum is simply dummy text of the printing industry</p>
-                                                                                    <ul class="post-meta">
-                                                                                        <li><i class="fa fa-check-circle-o"></i> Min order $50</li>
-                                                                                        <li><i class="flaticon-transport"></i> 30min</li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <div class="ord-btn">
-                                                                                    <a class="brd-rd2" href="#" title="Order Now" itemprop="url">Order Now</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="wow fadeInUp" data-wow-delay="0.4s">
-                                                                            <div class="featured-restaurant-box">
-                                                                                <div class="featured-restaurant-thumb">
-                                                                                    <a href="#" title="" itemprop="url"><img src={{asset("assets/images/resource/dish-img1-4.jpg")}} alt="dish-img1-4.jpg" itemprop="image"></a>
-                                                                                </div>
-                                                                                <div class="featured-restaurant-info">
-                                                                                    <h4 itemprop="headline"><a href="#" title="" itemprop="url">Chicken Bacon Ranch</a></h4>
-                                                                                    <span class="price">$85.00</span>
-                                                                                    <p itemprop="description">Lorem Ipsum is simply dummy text of the printing industry</p>
-                                                                                    <ul class="post-meta">
-                                                                                        <li><i class="fa fa-check-circle-o"></i> Min order $50</li>
-                                                                                        <li><i class="flaticon-transport"></i> 30min</li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <div class="ord-btn">
-                                                                                    <a class="brd-rd2" href="#" title="Order Now" itemprop="url">Order Now</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        -->
+                                                                        
                                                                     </ul>
                                                                 </div>
                                                                 <div class="dishes-list-wrapper">
-                                                                    <h4 class="title3" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Burgers</span></h4>
-                                                                    <span class="post-rate red-bg brd-rd2"><i class="fa fa-star-o"></i> 4.25</span>
+                                                                   
+                                                                   
                                                                     <ul class="dishes-list">
-                                                                        <!--
-                                                                        <li class="wow fadeInUp" data-wow-delay="0.2s">
-                                                                            <div class="featured-restaurant-box">
-                                                                                <div class="featured-restaurant-thumb">
-                                                                                    <a href="#" title="" itemprop="url"><img src={{asset("assets/images/resource/dish-img2-1.jpg")}} alt="dish-img2-1.jpg" itemprop="image"></a>
-                                                                                </div>
-                                                                                <div class="featured-restaurant-info">
-                                                                                    <h4 itemprop="headline"><a href="#" title="" itemprop="url">Bacon Gouda Burger</a></h4>
-                                                                                    <span class="price">$85.00</span>
-                                                                                    <p itemprop="description">Lorem Ipsum is simply dummy text of the printing industry</p>
-                                                                                    <ul class="post-meta">
-                                                                                        <li><i class="fa fa-check-circle-o"></i> Min order $50</li>
-                                                                                        <li><i class="flaticon-transport"></i> 30min</li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <div class="ord-btn">
-                                                                                    <a class="brd-rd2" href="#" title="Order Now" itemprop="url">Order Now</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="wow fadeInUp" data-wow-delay="0.3s">
-                                                                            <div class="featured-restaurant-box">
-                                                                                <div class="featured-restaurant-thumb">
-                                                                                    <a href="#" title="" itemprop="url"><img src={{asset("assets/images/resource/dish-img2-2.jpg")}} alt="dish-img2-2.jpg" itemprop="image"></a>
-                                                                                </div>
-                                                                                <div class="featured-restaurant-info">
-                                                                                    <h4 itemprop="headline"><a href="#" title="" itemprop="url">Tribeca Chicken Burger</a></h4>
-                                                                                    <span class="price">$85.00</span>
-                                                                                    <p itemprop="description">Lorem Ipsum is simply dummy text of the printing industry</p>
-                                                                                    <ul class="post-meta">
-                                                                                        <li><i class="fa fa-check-circle-o"></i> Min order $50</li>
-                                                                                        <li><i class="flaticon-transport"></i> 30min</li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <div class="ord-btn">
-                                                                                    <a class="brd-rd2" href="#" title="Order Now" itemprop="url">Order Now</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="wow fadeInUp" data-wow-delay="0.4s">
-                                                                            <div class="featured-restaurant-box">
-                                                                                <div class="featured-restaurant-thumb">
-                                                                                    <a href="#" title="" itemprop="url"><img src={{asset("assets/images/resource/dish-img2-3.jpg")}} alt="dish-img2-3.jpg" itemprop="image"></a>
-                                                                                </div>
-                                                                                <div class="featured-restaurant-info">
-                                                                                    <h4 itemprop="headline"><a href="#" title="" itemprop="url">Charburger</a></h4>
-                                                                                    <span class="price">$85.00</span>
-                                                                                    <p itemprop="description">Lorem Ipsum is simply dummy text of the printing industry</p>
-                                                                                    <ul class="post-meta">
-                                                                                        <li><i class="fa fa-check-circle-o"></i> Min order $50</li>
-                                                                                        <li><i class="flaticon-transport"></i> 30min</li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <div class="ord-btn">
-                                                                                    <a class="brd-rd2" href="#" title="Order Now" itemprop="url">Order Now</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="wow fadeInUp" data-wow-delay="0.5s">
-                                                                            <div class="featured-restaurant-box">
-                                                                                <div class="featured-restaurant-thumb">
-                                                                                    <a href="#" title="" itemprop="url"><img src={{asset("assets/images/resource/dish-img2-4.jpg")}} alt="dish-img2-4.jpg" itemprop="image"></a>
-                                                                                </div>
-                                                                                <div class="featured-restaurant-info">
-                                                                                    <h4 itemprop="headline"><a href="#" title="" itemprop="url">Salads & Veggies Burger</a></h4>
-                                                                                    <span class="price">$85.00</span>
-                                                                                    <p itemprop="description">Lorem Ipsum is simply dummy text of the printing industry</p>
-                                                                                    <ul class="post-meta">
-                                                                                        <li><i class="fa fa-check-circle-o"></i> Min order $50</li>
-                                                                                        <li><i class="flaticon-transport"></i> 30min</li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <div class="ord-btn">
-                                                                                    <a class="brd-rd2" href="#" title="Order Now" itemprop="url">Order Now</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        -->
                                                                     </ul>
                                                                 </div>
                                                             </div>

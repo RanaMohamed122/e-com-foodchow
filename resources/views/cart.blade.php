@@ -17,124 +17,71 @@
     <link rel="stylesheet" href={{asset("assets/css/yellow-color.css")}}>
     <link rel="stylesheet" href={{asset("assets/css/responsive.css")}}>
 </head>
-<body itemscope>
-    <main>
-        <div class="preloader">
-            <div id="cooking">
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div class="bubble"></div>
-                <div id="area">
-                    <div id="sides">
-                        <div id="pan"></div>
-                        <div id="handle"></div>
-                    </div>
-                    <div id="pancake">
-                        <div id="pastry"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+<body >
         <header class="stick">
-            <div class="topbar">
-                <div class="container">
-                  
-                 
-                    <div class="topbar-register">
-                        <a class="log-popup-btn"  itemprop="url" >LOGIN</a> /
-                        <a class="sign-popup-btn" href="#" title="Register" itemprop="url">REGISTER</a>
-                    </div>
-                    <div class="social1">
-                        <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
-                        <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
-                    </div>
-                </div>                
-            </div><!-- Topbar -->
-            <div class="logo-menu-sec">
-                <div class="container">
-                    <div class="logo"><h1 itemprop="headline"><a href={{asset("/")}} title="Home" itemprop="url"><img src={{asset("assets/images/logo2.png")}} alt="logo.png" itemprop="image"></a></h1></div>
-                    <nav>
-                        <div class="menu-sec">
-                            <ul>
-                                <li class="menu-item-has-children"><a href={{asset("/offers")}} title="HOMEPAGES" itemprop="url">Our Offers</a>
-                                    <ul class="sub-dropdown">
-                                        <li><a href="#" title="HOMEPAGE 1" itemprop="url">Office Packages</a></li>
-                                        <li><a href="#" title="HOMEPAGE 2" itemprop="url">Parties Packages</a></li>
-                                    </ul> 
-                                </li>
-                                <li class="menu-item-has-children"><a href={{asset("/services")}} title="RESTAURANTS" itemprop="url">Our Services</a>
-                                  <!--  <ul class="sub-dropdown">
-                                        <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
-                                        <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
-                                        <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
-                                        <li><a href="food-recipes.html" title="RESTAURANT DETAILS" itemprop="url">FOOD RECIPES</a></li>
-                                        <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
-                                        <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
-                                        <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
-                                    </ul> -->
-                                </li>
-                                <li class="menu-item-has-children"><a href="#" title="PAGES" itemprop="url">All Categoires</a>
-                                    <ul class="sub-dropdown">
-                                        <li class="menu-item-has-children"><a href="#" title="BLOG" itemprop="url">BLOG</a>
-                                            <ul class="sub-dropdown">
-                                                <li class="menu-item-has-children"><a href="#" title="BLOG LAYOUTS" itemprop="url">BLOG LAYOUTS</a>
-                                                    <ul class="sub-dropdown">
-                                                        <li><a href="blog-right-sidebar.html" title="BLOG WITH RIGHT SIDEBAR" itemprop="url">BLOG (W.R.S)</a></li>
-                                                        <li><a href="blog-left-sidebar.html" title="BLOG WITH LEFT SIDEBAR" itemprop="url">BLOG (W.L.S)</a></li>
-                                                        <li><a href="blog.html" title="BLOG WITH NO SIDEBAR" itemprop="url">BLOG</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item-has-children"><a href="#" title="BLOG DETAIL" itemprop="url">BLOG DETAIL</a>
-                                                    <ul class="sub-dropdown">
-                                                        <li><a href="blog-detail-right-sidebar.html" title="BLOG DETAIL WITH RIGHT SIDEBAR" itemprop="url">BLOG DETAIL (W.R.S)</a></li>
-                                                        <li><a href="blog-detail-left-sidebar.html" title="BLOG DETAIL WITH LEFT SIDEBAR" itemprop="url">BLOG DETAIL (W.L.S)</a></li>
-                                                        <li><a href="blog-detail.html" title="BLOG DETAIL WITH NO SIDEBAR" itemprop="url">BLOG DETAIL</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item-has-children"><a href="#" title="BLOG FORMATES" itemprop="url">BLOG FORMATES</a>
-                                                    <ul class="sub-dropdown">
-                                                        <li><a href="blog-detail-video.html" title="BLOG DETAIL WITH VIDEO" itemprop="url">BLOG DETAIL (VIDEO)</a></li>
-                                                        <li><a href="blog-detail-audio.html" title="BLOG DETAIL WITH AUDIO" itemprop="url">BLOG DETAIL (AUDIO)</a></li>
-                                                        <li><a href="blog-detail-carousel.html" title="BLOG DETAIL WITH CAROUSEL" itemprop="url">BLOG DETAIL (CAROUSEL)</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
+                <div class="topbar">
+                    <div class="container">
+     
+                        <div class="topbar-register">
+                            @if(empty(Auth::user()->id))  
+                                <a class="log-popup-btn"  itemprop="url" >LOGIN</a> /
+                                <a class="sign-popup-btn" href="#" title="Register" itemprop="url">REGISTER</a>
+                            @else                        
+                                <li style="list-style: none;" class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                    </a>
+    
+                                    <ul class="dropdown-menu" style="min-width:10px; margin-left:-8%">
+                                        <li>
+                                            <a href="{{ route('logout') }}" style="background-color: snow;font-weight: 500;"
+                                                onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+    
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
                                         </li>
-                                        <li class="menu-item-has-children"><a href="#" title="SPECIAL PAGES" itemprop="url">SPECIAL PAGES</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="404.html" title="404 ERROR" itemprop="url">404 ERROR</a></li>
-                                                <li><a href="search-found.html" title="SEARCH FOUND" itemprop="url">SEARCH FOUND</a></li>
-                                                <li><a href="search-not-found.html" title="SEARCH NOT FOUND" itemprop="url">SEARCH NOT FOUND</a></li>
-                                                <li><a href="coming-soon.html" title="COMING SOON" itemprop="url">COMING SOON</a></li>
-                                                <li><a href="login-register.html" title="LOGIN & REGISTER" itemprop="url">LOGIN & REGISTER</a></li>
-                                                <li><a href="price-table.html" title="PRICE TABLE" itemprop="url">PRICE TABLE</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#" title="GALLERY" itemprop="url">GALLERY</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="gallery.html" title="FOOD GALLERY" itemprop="url">FOOD GALLERY</a></li>
-                                                <li><a href="gallery-detail.html" title="GALLERY DETAIL" itemprop="url">GALLERY DETAIL</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="register-reservation.html" title="REGISTER RESERVATION" itemprop="url">REGISTER RESERVATION</a></li>
-                                        <li><a href="how-it-works.html" title="HOW IT WORKS" itemprop="url">HOW IT WORKS</a></li>
-                                        <li><a href="dashboard.html" title="USER PROFILE" itemprop="url">USER PROFILE</a></li>
-                                        <li><a href="about-us.html" title="ABOUT US" itemprop="url">ABOUT US</a></li>
-                                        <li><a href="food-detail.html" title="FOOD DETAIL" itemprop="url">FOOD DETAIL</a></li>
                                     </ul>
                                 </li>
-                                <li><a href={{asset("/contact-us")}} title="CONTACT US" itemprop="url">Contact Us</a></li>
-                            </ul>
-                            <a class="red-bg brd-rd4" href="register-reservation.html" title="Register" itemprop="url">Register as a Chef</a>
+                            @endif
                         </div>
-                    </nav><!-- Navigation -->
+                       
+                    </div>                
+                </div><!-- Topbar -->
+                <div class="logo-menu-sec" >
+                  <div class="container">
+                        <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="assets/images/logo2.png" alt="logo.png" itemprop="image"></a></h1></div>
+                        <nav>
+                            <div class="menu-sec">
+                                <ul>
+                                    <li class="menu-item-has-children"><a href={{asset("/offers")}} title="HOMEPAGES" itemprop="url">Our Offers</a>
+                                       <ul class="sub-dropdown">
+                                            <li><a href="#" title="HOMEPAGE 1" itemprop="url">Office Packages</a></li>
+                                            <li><a href="#" title="HOMEPAGE 2" itemprop="url">Parties Packages</a></li>
+                                        </ul> 
+                                    </li>
+                                    <li class="menu-item-has-children"><a href={{asset("/services")}} title="RESTAURANTS" itemprop="url">Our Services</a>
+                                     
+                                    </li>
+                                    <li class="menu-item-has-children"><a href={{asset("/categories")}} title="PAGES" itemprop="url">All Categoires</a>
+                                       
+                                        <ul >
+                                            @foreach($categories as $category)
+                                        <li><a href="{{ url('/categories/products_found/'.$category->id) }}" title="" itemprop="url">{{$category->name}}</a> </li>
+                                            @endforeach
+                                        </ul>
+                                    <li><a href={{asset("/contact-us")}} title="CONTACT US" itemprop="url">Contact Us</a></li>
+                                </ul>
+                                
+                            </div>
+                        </nav><!-- Navigation -->
+                    </div>
                 </div>
-            </div><!-- Logo Menu Section -->
-        </header><!-- Header -->
+                <!-- Logo Menu Section -->
+            </header><!-- Header -->
         <div class="bread-crumbs-wrapper">
             <div class="container">
                 <ol class="breadcrumb">
@@ -150,31 +97,37 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-lg-12">
-                        <div class="sec-box">
+                        <div class="sec-box" style="margin-top:7%">
                             <div class="sec-wrapper">
                                 <div class="row">
                                     <div class="col-md-4 col-sm-12 col-lg-4" style="margin-left: 0%; width:90%; margin-top: 5%; margin-bottom:5%">
                                         <div class="order-wrapper right wow fadeIn" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeIn;">
                                             <div class="order-inner gradient-brd">
-                                                <h4 itemprop="headline">Your Order</h4>
+                                                <h4 itemprop="headline" style="font-size: 32px;">Your Order</h4>
                                                 <div class="order-list-wrapper">
                                                     <ul class="order-list-inner">
                                                         @foreach ($cart as $c)
                                                         <li>
                                                             <div class="dish-name">
-                                                            <i> </i> <h6 itemprop="headline">{{$c->product_name}}</h6> <span class="price">{{$c->price}}L.E.</span>
+                                                             <h6 itemprop="headline" style="color: #000000;font-size: 20px;">{{$c->product_name}}</h6> <span class="price" style="font-size: 20px;margin-right: 21%;">{{$c->price}} L.E.</span>
+                                                             <a class="cart_quantity_delete" href="{{ url('/cart/delete-product/'.$c->id) }}"><i class="fa fa-trash" style="float: right;
+                                                              
+                                                                margin-right: -22%;
+                                                                font-size: 21px;"></i></a><br>
+                                                             
+
                                                             <td class="cart_quantity">
                                                                 <div class="cart_quantity_button">
-                                                                    <a class="cart_quantity_up" href="{{ url('/cart/update-quantity/'.$c->id.'/1') }}"> + </a>
+                                                                        <p style="font-size: 15px;
+                                                                        margin-left: 1%;
+                                                                        color: red;"><b>Quantity</b></p> <a class="cart_quantity_up" href="{{ url('/cart/update-quantity/'.$c->id.'/1') }}"><i class="fa fa-plus" style="margin-left: 1%;"></i></a>
                                                                     <input class="cart_quantity_input" type="text" name="quantity" value="{{ $c->quantity }}" autocomplete="off" size="2">
                                                                     @if($c->quantity>1)
-                                                                        <a class="cart_quantity_down" href="{{ url('/cart/update-quantity/'.$c->id.'/-1') }}"> - </a>
+                                                                        <a class="cart_quantity_down" style="border-bottom: 1px solid #e5e5e5;" href="{{ url('/cart/update-quantity/'.$c->id.'/-1') }}"><i class="fa fa-minus" style="margin-left:-5%;"></i></a>
                                                                     @endif
                                                                 </div>
-                                                            </td>
-                                                            <td class="cart_delete">
-                                                                <a class="cart_quantity_delete" href="{{ url('/cart/delete-product/'.$c->id) }}"><i class="fa fa-times"></i></a>
-                                                            </td>
+                                                           
+                                                   
                                                             </div>
                                                             
                                                         </li>
@@ -230,7 +183,7 @@
                                                        
                                                     </ul>
                                                     <ul class="order-method brd-rd2 red-bg">
-                                                        <li><span class="radio-box cash-popup-btn"><label for="pay1-1"><a href="{{ url('pay_cash') }}"> Cash</a></label></span> <span class="radio-box card-popup-btn"><input type="radio" name="method" id="pay1-2"><label for="pay1-2"><i class="fa fa-credit-card-alt"></i> Card</label></span></li>
+                                                        <li><span class="radio-box cash-popup-btn" style="margin-right:291px;"><label for="pay1-1"><a href="{{ url('pay_cash') }}"> Proceed to checkout</a></label></span> </li>
                                                         <!--<li><a class="brd-rd2" href="#" title="" itemprop="url">CONFIRM ORDER</a></li>-->
                                                     </ul>
                                                 </div>

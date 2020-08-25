@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Category;
 use DB;
-class ServicesController extends Controller
+
+class WelcomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +18,7 @@ class ServicesController extends Controller
     {
         $categories = Category::all();
     	//$categories = json_decode(json_encode($categories));
-        return view('services')->with('categories',$categories);
+        return view('welcome')->with('categories',$categories);
     }
 
     /**
