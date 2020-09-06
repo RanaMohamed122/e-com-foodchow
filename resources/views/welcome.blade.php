@@ -104,6 +104,8 @@
                                         @endforeach
                                     </ul>
                                 <li><a href={{asset("/contact-us")}} title="CONTACT US" itemprop="url">Contact Us</a></li>
+                                <li class="menu-item-has-children"><a href={{asset("/chefBlogs")}} title="PAGES" itemprop="url">Blogs</a></li>
+
                             </ul>
                             
                         </div>
@@ -398,6 +400,8 @@
     <script src={{asset("assets/js/bootstrap.min.js")}}></script>
     <script src={{asset("assets/js/plugins.js")}}></script>
     <script src={{asset("assets/js/main.js")}}></script>
+    <script src={{asset("https://account.snatchbot.me/script.js")}}></script>
+    <script>window.sntchChat.Init(130028)</script> 
 </body>	
 
 </html>

@@ -52,8 +52,8 @@ class ProductsController extends Controller
                     //$medium_image_path = 'images/backend_images/product/medium'.'/'.$fileName;  
                     //$small_image_path = 'images/backend_images/product/small'.'/'.$fileName;  
 
-	                Image::make($image_tmp)->save($image_path);
- 					//Image::make($image_tmp)->resize(600, 600)->save($image_path);
+	                //Image::make($image_tmp)->save($image_path);
+ 					Image::make($image_tmp)->resize(500, 500)->save($image_path);
      				//Image::make($image_tmp)->resize(300, 300)->save($image_path);
 
      				$product->image = $fileName; 
@@ -110,13 +110,13 @@ class ProductsController extends Controller
                     // Upload Images after Resize
                     $extension = $image_tmp->getClientOriginalExtension();
 	                $fileName = rand(111,99999).'.'.$extension;
-                    $large_image_path = 'images/backend_images/product/large'.'/'.$fileName;
-                    $medium_image_path = 'images/backend_images/product/medium'.'/'.$fileName;  
-                    $small_image_path = 'images/backend_images/product/small'.'/'.$fileName;  
+                    $image_path = 'assets/images/resource'.'/'.$fileName;
+                    //$medium_image_path = 'images/backend_images/product/medium'.'/'.$fileName;  
+                    //$small_image_path = 'images/backend_images/product/small'.'/'.$fileName;  
 
-	                Image::make($image_tmp)->save($large_image_path);
- 					Image::make($image_tmp)->resize(600, 600)->save($medium_image_path);
-     				Image::make($image_tmp)->resize(300, 300)->save($small_image_path);
+	                //Image::make($image_tmp)->save($large_image_path);
+ 					Image::make($image_tmp)->resize(500, 500)->save($image_path);
+     				//Image::make($image_tmp)->resize(300, 300)->save($small_image_path);
 
                 }
             }else if(!empty($data['current_image'])){
@@ -129,12 +129,8 @@ class ProductsController extends Controller
             	$data['description'] = '';
             }
 
-            if(empty($data['care'])){
-                $data['care'] = '';
-            }
 
-			Product::where(['id'=>$id])->update(['status'=>$status,'category_id'=>$data['category_id'],'product_name'=>$data['product_name'],
-				'product_code'=>$data['product_code'],'product_color'=>$data['product_color'],'description'=>$data['description'],'care'=>$data['care'],'price'=>$data['price'],'image'=>$fileName]);
+			Product::where(['id'=>$id])->update(['category_id'=>$data['category_id'],'product_name'=>$data['product_name'],'description'=>$data['description'],'project_name'=>$data['project_name'],'price'=>$data['price'],'status'=>$data['status'],'image'=>$fileName]);
 		
 			return redirect()->back()->with('flash_message_success', 'Product has been edited successfully');
 		}

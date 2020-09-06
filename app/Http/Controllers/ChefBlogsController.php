@@ -23,7 +23,17 @@ class ChefBlogsController extends Controller
     //
     public function viewBlogs(){
         $chefsBlogs = ChefBlog::get();
-        return view('chefBlogs')->with('chefsBlogs',$chefsBlogs);
+        $categories = Category::all();
+
+        return view('chefBlogs')->with('chefsBlogs',$chefsBlogs)->with('categories',$categories);
+    }
+    public function viewBlogDetail($id){
+
+        $chefBlog = ChefBlog::find($id);
+        $chef = Chef::find($chefBlog->chef_id);
+        $categories = Category::all();
+
+        return view('blogDetail')->with('chefBlog',$chefBlog)->with('chef',$chef)->with('categories',$categories);
     }
 
 }

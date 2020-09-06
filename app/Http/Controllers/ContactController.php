@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class ContactController extends Controller
 {
@@ -13,7 +14,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('contact-us');
+        $categories = Category::all();
+    	//$categories = json_decode(json_encode($categories));
+        return view('contact-us')->with('categories',$categories);
     }
 
     /**

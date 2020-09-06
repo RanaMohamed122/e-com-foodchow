@@ -35,12 +35,6 @@
                     </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Name</label>
-                <div class="controls">
-                  <input type="text" name="project_name" id="project_name">
-                </div>
-              </div>
-              <div class="control-group">
                 <label class="control-label">Image</label>
                 <div class="controls">
                   <input type="file" name="image" id="image">

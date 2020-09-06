@@ -42,17 +42,45 @@
         <header class="stick">
             <div class="topbar">
                 <div class="container">
+ 
                     <div class="topbar-register">
-                        <a class="log-popup-btn" href="#" title="Login" itemprop="url">LOGIN</a> / <a class="sign-popup-btn" href="#" title="Register" itemprop="url">REGISTER</a>
+                        @if(empty(Auth::user()->id))  
+                            <a class="log-popup-btn"  itemprop="url" >LOGIN</a> /
+                            <a class="sign-popup-btn" href="#" title="Register" itemprop="url">REGISTER</a>
+                        @else                        
+                            <li style="list-style: none;" class="dropdown">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" style="min-width:10px; margin-left:-8%">
+                                    <li>
+                                        <a href="{{ url('UserProfile') }}">
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        
+                                        <a href="{{ route('logout') }}" style="background-color: snow;font-weight: 500;"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
                     </div>
-                    <div class="social1">
-                        <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
-                        <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
+                    <div class="social1" style="margin-top: 5px;width: 3%;margin-right: -5%;">
+                        <a href="{{asset("/cart")}}" title="Facebook" itemprop="url" target="_blank"><img src="assets/images/icon3.png"></a>
+                       
                     </div>
-                </div>
-            </div>
-            <!-- Topbar -->
+                </div>                
+            </div><!-- Topbar -->
             <div class="logo-menu-sec">
                 <div class="container">
                     <div class="logo">
@@ -130,7 +158,7 @@
                                                     <ul class="nav nav-tabs">
                                                         <li class="active"><a href="#dashboard" data-toggle="tab"><i class="fa fa-dashboard"></i> DASHBOARD</a></li>
                                                         <li><a href="#my-reviews" data-toggle="tab"><i class="fa fa-comments"></i> MY REVIEWS</a></li>
-                                                        <li><a href="#shortlists" data-toggle="tab"><i class="fa fa-heart"></i> SHORTLISTS</a></li>
+                                                        <!--<li><a href="#shortlists" data-toggle="tab"><i class="fa fa-heart"></i> SHORTLISTS</a></li>-->
                                                         <li><a href="#statement" data-toggle="tab"><i class="fa fa-wpforms"></i> MY ORDERS</a></li>
                                                         <li><a href="#account-settings" data-toggle="tab"><i class="fa fa-cog"></i> ACCOUNT SETTINGS</a></li>
                                                     </ul>

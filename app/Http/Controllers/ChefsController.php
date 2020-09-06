@@ -43,13 +43,13 @@ class ChefsController extends Controller
                     // Upload Images after Resize
                     $extension = $image_tmp->getClientOriginalExtension();
 	                $fileName = rand(111,99999).'.'.$extension;
-                    $large_image_path = 'images/backend_images/product/large'.'/'.$fileName;
-                    $medium_image_path = 'images/backend_images/product/medium'.'/'.$fileName;  
-                    $small_image_path = 'images/backend_images/product/small'.'/'.$fileName;  
+                    $image_path = 'assets/images/resource'.'/'.$fileName;
+                    //$medium_image_path = 'images/backend_images/product/medium'.'/'.$fileName;  
+                    //$small_image_path = 'images/backend_images/product/small'.'/'.$fileName;  
 
-	                Image::make($image_tmp)->save($large_image_path);
- 					Image::make($image_tmp)->resize(600, 600)->save($medium_image_path);
-     				Image::make($image_tmp)->resize(300, 300)->save($small_image_path);
+	                Image::make($image_tmp)->save($image_path);
+ 					//Image::make($image_tmp)->resize(600, 600)->save($medium_image_path);
+     				//Image::make($image_tmp)->resize(300, 300)->save($small_image_path);
 
      				$chef->image = $fileName; 
 				}
@@ -103,13 +103,13 @@ public function editChef(Request $request,$id=null){
 				// Upload Images after Resize
 				$extension = $image_tmp->getClientOriginalExtension();
 				$fileName = rand(111,99999).'.'.$extension;
-				$large_image_path = 'images/backend_images/product/large'.'/'.$fileName;
-				$medium_image_path = 'images/backend_images/product/medium'.'/'.$fileName;  
-				$small_image_path = 'images/backend_images/product/small'.'/'.$fileName;  
+				$image_path = 'assets/images/resource'.'/'.$fileName;
+				//$medium_image_path = 'images/backend_images/product/medium'.'/'.$fileName;  
+				//$small_image_path = 'images/backend_images/product/small'.'/'.$fileName;  
 
-				Image::make($image_tmp)->save($large_image_path);
-				 Image::make($image_tmp)->resize(600, 600)->save($medium_image_path);
-				 Image::make($image_tmp)->resize(300, 300)->save($small_image_path);
+				Image::make($image_tmp)->save($image_path);
+				//Image::make($image_tmp)->resize(600, 600)->save($medium_image_path);
+				//Image::make($image_tmp)->resize(300, 300)->save($small_image_path);
 
 			}
 		}else if(!empty($data['current_image'])){
@@ -167,7 +167,6 @@ public function editChef(Request $request,$id=null){
 			
             $chefBlog = new ChefBlog;
             $chefBlog->chef_id = $data['chef_id'];
-            $chefBlog->project_name = $data['project_name'];
     		$chefBlog->blog_title = $data['blog_title'];
             $chefBlog->blog_brief = $data['blog_brief'];
             $chefBlog->blog_body = $data['blog_body'];    
@@ -181,7 +180,9 @@ public function editChef(Request $request,$id=null){
 	                $fileName = rand(111,99999).'.'.$extension;
                     $image_path = 'assets/images/resource'.'/'.$fileName;
                     
-	                Image::make($image_tmp)->save($image_path);
+					//Image::make($image_tmp)->save($image_path);
+					Image::make($image_tmp)->resize(340,208)->save($image_path);
+
  				
      				$chefBlog->image = $fileName; 
 				}
@@ -217,9 +218,10 @@ public function editChef(Request $request,$id=null){
 	                $fileName = rand(111,99999).'.'.$extension;
                     $image_path = 'assets/images/resource'.'/'.$fileName;
                     
-	                Image::make($image_tmp)->save($image_path);
+					//Image::make($image_tmp)->save($image_path);
+					Image::make($image_tmp)->resize(340,209)->save($image_path);
+
  				
-     				$chefBlog->image = $fileName; 
 				}
 			}else if(!empty($data['current_image'])){
 					$fileName = $data['current_image'];
@@ -228,7 +230,7 @@ public function editChef(Request $request,$id=null){
 			}
 			
 
-			ChefBlog::where(['id'=>$id])->update(['chef_id'=>$data['chef_id'],'project_name'=>$data['project_name'],
+			ChefBlog::where(['id'=>$id])->update(['chef_id'=>$data['chef_id'],
 				'blog_title'=>$data['blog_title'],'blog_brief'=>$data['blog_brief'],'blog_body'=>$data['blog_body'],'image'=>$fileName]);
 			
 			return redirect()->back()->with('flash_message_success', 'Chef Blog has been edited successfully');

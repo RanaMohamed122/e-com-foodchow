@@ -40,6 +40,8 @@ class ReviewsController extends Controller
         $review->save();
         
 
-        return view('welcome');
+        return redirect()->action(
+            'CategoriesController@ViewChefProduct', ['id'=>$id]
+        );;
     }
 }

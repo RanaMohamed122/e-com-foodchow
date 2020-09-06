@@ -33,16 +33,16 @@
                             <li><span>Phone:</span><input type="text" id="phone" name="phone" style="padding:8px;color: #555;" value={{$user->phone}}>  </li>
                             <li><span>Address:</span><textarea class="brd-rd3"  style="height: 30%">{{$user->address}} </textarea></li>
                         @elseif($flag==1)
-                            <li><span>Name:</span> <input  type="text" id="user_name" name="user_name" style="padding:8px;color: #555;"></li>
-                            <li><span>Email:</span> <input  type="email" id="user_email" name="user_email" style="padding:8px;color: #555;"> </li>
-                            <li><span>Phone:</span><input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" style="padding:8px;color: #555;">  </li>
-                            <li><span>Address:</span><textarea class="brd-rd3" id="address" name="address" style="height: 30%"> </textarea></li>     
+                            <li><span>Name:</span> <input  type="text" id="user_name" name="user_name" required style="padding:8px;color: #555;"></li>
+                            <li><span>Email:</span> <input  type="email" id="user_email" name="user_email" required style="padding:8px;color: #555;"> </li>
+                            <li><span>Phone:</span><input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required style="padding:8px;color: #555;">  </li>
+                            <li><span>Address:</span><textarea class="brd-rd3" id="address" name="address" required style="height: 30%"> </textarea></li>     
                         @endif
                         </ul>
                     </div>
                     <div class="col-md-6 col-sm-6 col-lg-6">
                         <label>Order Note <sup>*</sup></label>
-                        <textarea class="brd-rd3" placeholder="Description..."></textarea>
+                        <textarea class="brd-rd3" name="description" id="description" placeholder="Description..."></textarea>
                     </div>
                 </div>
                
@@ -73,6 +73,20 @@
 <script src={{asset("assets/js/google-map-int.js")}}></script>
 <script src={{asset("../../www.google.com/recaptcha/api.js")}}></script>
 <script src={{asset("assets/js/main.js")}}></script>
+
+<script src="{{ asset('js/backend_js/jquery.min.js') }} "></script> 
+<!-- <script src="{{ asset('js/backend_js/jquery.ui.custom.js') }} "></script> --> 
+<script src="{{ asset('js/backend_js/bootstrap.min.js') }} "></script> 
+<script src="{{ asset('js/backend_js/jquery.uniform.js') }} "></script> 
+<script src="{{ asset('js/backend_js/select2.min.js') }} "></script> 
+<script src="{{ asset('js/backend_js/jquery.validate.js') }} "></script> 
+<script src="{{ asset('js/backend_js/jquery.dataTables.min.js') }} "></script> 
+<script src="{{ asset('js/backend_js/matrix.js') }} "></script> 
+<script src="{{ asset('js/backend_js/matrix.form_validation.js') }} "></script>
+<script src="{{ asset('js/backend_js/matrix.tables.js') }}"></script>
+<script src="{{ asset('js/backend_js/matrix.popover.js') }}"></script>
+<script src="{{ asset('js/backend_js/sweetalert.min.js') }}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </body>	
 
 </html>

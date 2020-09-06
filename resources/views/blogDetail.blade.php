@@ -42,249 +42,85 @@
         <header class="stick">
             <div class="topbar">
                 <div class="container">
-                    <div class="select-wrp">
-                        <select data-placeholder="Feel Like Eating">
-                            <option>FEEL LIKE EATING</option>
-                            <option>Burger</option>
-                            <option>Pizza</option>
-                            <option>Fried Rice</option>
-                            <option>Chicken Shots</option>
-                        </select>
-                    </div>
-                    <div class="select-wrp">
-                        <select data-placeholder="Choose Location">
-                            <option>CHOOSE LOCATION</option>
-                            <option>New york</option>
-                            <option>Washington</option>
-                            <option>Chicago</option>
-                            <option>Los Angeles</option>
-                        </select>
-                    </div>
+ 
                     <div class="topbar-register">
-                        <a class="log-popup-btn" href="#" title="Login" itemprop="url">LOGIN</a> / <a class="sign-popup-btn" href="#" title="Register" itemprop="url">REGISTER</a>
+                        @if(empty(Auth::user()->id))  
+                            <a class="log-popup-btn"  itemprop="url" >LOGIN</a> /
+                            <a class="sign-popup-btn" href="#" title="Register" itemprop="url">REGISTER</a>
+                        @else                        
+                            <li style="list-style: none;" class="dropdown">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" style="min-width:10px; margin-left:-8%">
+                                    <li>
+                                        <a href="{{ url('UserProfile') }}">
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        
+                                        <a href="{{ route('logout') }}" style="background-color: snow;font-weight: 500;"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
                     </div>
-                    <div class="social1">
-                        <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
-                        <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
+                    <div class="social1" style="margin-top: 5px;width: 3%;margin-right: -5%;">
+                        <a href="{{asset("/cart")}}" title="Facebook" itemprop="url" target="_blank"><img src="{{asset('assets/images/icon3.png')}}"></a>
+                       
                     </div>
                 </div>                
             </div><!-- Topbar -->
-            <div class="logo-menu-sec">
-                <div class="container">
-                    <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="assets/images/logo2.png" alt="logo.png" itemprop="image"></a></h1></div>
+            <div class="logo-menu-sec" >
+              <div class="container">
+                    <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="{{asset('assets/images/logo2.png')}}" alt="logo.png" itemprop="image"></a></h1></div>
                     <nav>
                         <div class="menu-sec">
                             <ul>
-                                <li class="menu-item-has-children"><a href="#" title="HOMEPAGES" itemprop="url"><span class="red-clr">FOOD ORDERING</span>HOMEPAGES</a>
-                                    <ul class="sub-dropdown">
-                                        <li><a href="index-2.html" title="HOMEPAGE 1" itemprop="url">HOMEPAGE 1</a></li>
-                                        <li><a href="index2.html" title="HOMEPAGE 2" itemprop="url">HOMEPAGE 2</a></li>
-                                    </ul>
+                                <li class="menu-item-has-children"><a href={{asset("/offers")}} title="HOMEPAGES" itemprop="url">Our Offers</a>
+                                   <ul class="sub-dropdown">
+                                        <li><a href="#" title="HOMEPAGE 1" itemprop="url">Office Packages</a></li>
+                                        <li><a href="#" title="HOMEPAGE 2" itemprop="url">Parties Packages</a></li>
+                                    </ul> 
                                 </li>
-                                <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span class="red-clr">REAL FOOD</span>RESTAURANTS</a>
-                                    <ul class="sub-dropdown">
-                                        <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
-                                        <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
-                                        <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
-                                        <li><a href="food-recipes.html" title="RESTAURANT DETAILS" itemprop="url">FOOD RECIPES</a></li>
-                                        <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
-                                        <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
-                                        <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
-                                    </ul>
+                                <li class="menu-item-has-children"><a href={{asset("/services")}} title="RESTAURANTS" itemprop="url">Our Services</a>
+                                 
                                 </li>
-                                <li class="menu-item-has-children"><a href="#" title="PAGES" itemprop="url"><span class="red-clr">REAL FOOD</span>PAGES</a>
-                                    <ul class="sub-dropdown">
-                                        <li class="menu-item-has-children"><a href="#" title="BLOG" itemprop="url">BLOG</a>
-                                            <ul class="sub-dropdown">
-                                                <li class="menu-item-has-children"><a href="#" title="BLOG LAYOUTS" itemprop="url">BLOG LAYOUTS</a>
-                                                    <ul class="sub-dropdown">
-                                                        <li><a href="blog-right-sidebar.html" title="BLOG WITH RIGHT SIDEBAR" itemprop="url">BLOG (W.R.S)</a></li>
-                                                        <li><a href="blog-left-sidebar.html" title="BLOG WITH LEFT SIDEBAR" itemprop="url">BLOG (W.L.S)</a></li>
-                                                        <li><a href="blog.html" title="BLOG WITH NO SIDEBAR" itemprop="url">BLOG</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item-has-children"><a href="#" title="BLOG DETAIL" itemprop="url">BLOG DETAIL</a>
-                                                    <ul class="sub-dropdown">
-                                                        <li><a href="blog-detail-right-sidebar.html" title="BLOG DETAIL WITH RIGHT SIDEBAR" itemprop="url">BLOG DETAIL (W.R.S)</a></li>
-                                                        <li><a href="blog-detail-left-sidebar.html" title="BLOG DETAIL WITH LEFT SIDEBAR" itemprop="url">BLOG DETAIL (W.L.S)</a></li>
-                                                        <li><a href="blog-detail.html" title="BLOG DETAIL WITH NO SIDEBAR" itemprop="url">BLOG DETAIL</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="menu-item-has-children"><a href="#" title="BLOG FORMATES" itemprop="url">BLOG FORMATES</a>
-                                                    <ul class="sub-dropdown">
-                                                        <li><a href="blog-detail-video.html" title="BLOG DETAIL WITH VIDEO" itemprop="url">BLOG DETAIL (VIDEO)</a></li>
-                                                        <li><a href="blog-detail-audio.html" title="BLOG DETAIL WITH AUDIO" itemprop="url">BLOG DETAIL (AUDIO)</a></li>
-                                                        <li><a href="blog-detail-carousel.html" title="BLOG DETAIL WITH CAROUSEL" itemprop="url">BLOG DETAIL (CAROUSEL)</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#" title="SPECIAL PAGES" itemprop="url">SPECIAL PAGES</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="404.html" title="404 ERROR" itemprop="url">404 ERROR</a></li>
-                                                <li><a href="search-found.html" title="SEARCH FOUND" itemprop="url">SEARCH FOUND</a></li>
-                                                <li><a href="search-not-found.html" title="SEARCH NOT FOUND" itemprop="url">SEARCH NOT FOUND</a></li>
-                                                <li><a href="coming-soon.html" title="COMING SOON" itemprop="url">COMING SOON</a></li>
-                                                <li><a href="login-register.html" title="LOGIN & REGISTER" itemprop="url">LOGIN & REGISTER</a></li>
-                                                <li><a href="price-table.html" title="PRICE TABLE" itemprop="url">PRICE TABLE</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#" title="GALLERY" itemprop="url">GALLERY</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="gallery.html" title="FOOD GALLERY" itemprop="url">FOOD GALLERY</a></li>
-                                                <li><a href="gallery-detail.html" title="GALLERY DETAIL" itemprop="url">GALLERY DETAIL</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="register-reservation.html" title="REGISTER RESERVATION" itemprop="url">REGISTER RESERVATION</a></li>
-                                        <li><a href="how-it-works.html" title="HOW IT WORKS" itemprop="url">HOW IT WORKS</a></li>
-                                        <li><a href="dashboard.html" title="USER PROFILE" itemprop="url">USER PROFILE</a></li>
-                                        <li><a href="about-us.html" title="ABOUT US" itemprop="url">ABOUT US</a></li>
-                                        <li><a href="food-detail.html" title="FOOD DETAIL" itemprop="url">FOOD DETAIL</a></li>
+                                <li class="menu-item-has-children"><a href={{asset("/categories")}} title="PAGES" itemprop="url">All Categoires</a>
+                                   
+                                    <ul >
+                                        @foreach($categories as $category)
+                                    <li><a href="{{ url('/categories/products_found/'.$category->id) }}" title="" itemprop="url">{{$category->name}}</a> </li>
+                                        @endforeach
                                     </ul>
-                                </li>
-                                <li><a href="contact.html" title="CONTACT US" itemprop="url"><span class="red-clr">REAL FOOD</span>CONTACT US</a></li>
+                                <li><a href={{asset("/contact-us")}} title="CONTACT US" itemprop="url">Contact Us</a></li>
+                                <li class="menu-item-has-children"><a href={{asset("/chefBlogs")}} title="PAGES" itemprop="url">Blogs</a></li>
+
                             </ul>
-                            <a class="red-bg brd-rd4" href="register-reservation.html" title="Register" itemprop="url">REGISTER RESTAURANT</a>
+                            
                         </div>
                     </nav><!-- Navigation -->
                 </div>
-            </div><!-- Logo Menu Section -->
+            </div>
+            <!-- Logo Menu Section -->
         </header><!-- Header -->
-
-        <div class="responsive-header">
-            <div class="responsive-topbar">
-                <div class="select-wrp">
-                    <select data-placeholder="Feel Like Eating">
-                        <option>FEEL LIKE EATING</option>
-                        <option>Burger</option>
-                        <option>Pizza</option>
-                        <option>Fried Rice</option>
-                        <option>Chicken Shots</option>
-                    </select>
-                </div>
-                <div class="select-wrp">
-                    <select data-placeholder="Choose Location">
-                        <option>CHOOSE LOCATION</option>
-                        <option>New york</option>
-                        <option>Washington</option>
-                        <option>Chicago</option>
-                        <option>Los Angeles</option>
-                    </select>
-                </div>
-            </div>
-            <div class="responsive-logomenu">
-                <div class="logo"><h1 itemprop="headline"><a href="index-2.html" title="Home" itemprop="url"><img src="assets/images/logo.png" alt="logo.png" itemprop="image"></a></h1></div>
-                <span class="menu-btn yellow-bg brd-rd4"><i class="fa fa-align-justify"></i></span>
-            </div>
-            <div class="responsive-menu">
-                <span class="menu-close red-bg brd-rd3"><i class="fa fa-close"></i></span>
-                <div class="menu-lst">
-                    <ul>
-                        <li class="menu-item-has-children"><a href="#" title="HOMEPAGES" itemprop="url"><span class="yellow-clr">FOOD ORDERING</span>HOMEPAGES</a>
-                            <ul class="sub-dropdown">
-                                <li><a href="index-2.html" title="HOMEPAGE 1" itemprop="url">HOMEPAGE 1</a></li>
-                                <li><a href="index2.html" title="HOMEPAGE 2" itemprop="url">HOMEPAGE 2</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children"><a href="#" title="RESTAURANTS" itemprop="url"><span class="yellow-clr">REAL FOOD</span>RESTAURANTS</a>
-                            <ul class="sub-dropdown">
-                                <li><a href="restaurant-found.html" title="RESTAURANT 1" itemprop="url">RESTAURANT 1</a></li>
-                                <li><a href="restaurant-found2.html" title="RESTAURANT 2" itemprop="url">RESTAURANT 2</a></li>
-                                <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
-                                <li><a href="restaurant-detail.html" title="RESTAURANT DETAILS" itemprop="url">RESTAURANT DETAILS</a></li>
-                                <li><a href="food-recipes.html" title="RESTAURANT DETAILS" itemprop="url">FOOD RECIPES</a></li>
-                                <li><a href="our-articles.html" title="RESTAURANT DETAILS" itemprop="url">OUR ARTICLES</a></li>
-                                <li><a href="our-menu.html" title="RESTAURANT DETAILS" itemprop="url">OUR MENU</a></li>
-                                <li><a href="our-services.html" title="RESTAURANT DETAILS" itemprop="url">OUR SERVICES</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children"><a href="#" title="PAGES" itemprop="url"><span class="yellow-clr">REAL FOOD</span>PAGES</a>
-                            <ul class="sub-dropdown">
-                                <li class="menu-item-has-children"><a href="#" title="BLOG" itemprop="url">BLOG</a>
-                                    <ul class="sub-dropdown">
-                                        <li class="menu-item-has-children"><a href="#" title="BLOG LAYOUTS" itemprop="url">BLOG LAYOUTS</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="blog-right-sidebar.html" title="BLOG WITH RIGHT SIDEBAR" itemprop="url">BLOG (W.R.S)</a></li>
-                                                <li><a href="blog-left-sidebar.html" title="BLOG WITH LEFT SIDEBAR" itemprop="url">BLOG (W.L.S)</a></li>
-                                                <li><a href="blog.html" title="BLOG WITH NO SIDEBAR" itemprop="url">BLOG</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#" title="BLOG DETAIL" itemprop="url">BLOG DETAIL</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="blog-detail-right-sidebar.html" title="BLOG DETAIL WITH RIGHT SIDEBAR" itemprop="url">BLOG DETAIL (W.R.S)</a></li>
-                                                <li><a href="blog-detail-left-sidebar.html" title="BLOG DETAIL WITH LEFT SIDEBAR" itemprop="url">BLOG DETAIL (W.L.S)</a></li>
-                                                <li><a href="blog-detail.html" title="BLOG DETAIL WITH NO SIDEBAR" itemprop="url">BLOG DETAIL</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#" title="BLOG FORMATES" itemprop="url">BLOG FORMATES</a>
-                                            <ul class="sub-dropdown">
-                                                <li><a href="blog-detail-video.html" title="BLOG DETAIL WITH VIDEO" itemprop="url">BLOG DETAIL (VIDEO)</a></li>
-                                                <li><a href="blog-detail-audio.html" title="BLOG DETAIL WITH AUDIO" itemprop="url">BLOG DETAIL (AUDIO)</a></li>
-                                                <li><a href="blog-detail-carousel.html" title="BLOG DETAIL WITH CAROUSEL" itemprop="url">BLOG DETAIL (CAROUSEL)</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"><a href="#" title="SPECIAL PAGES" itemprop="url">SPECIAL PAGES</a>
-                                    <ul class="sub-dropdown">
-                                        <li><a href="404.html" title="404 ERROR" itemprop="url">404 ERROR</a></li>
-                                        <li><a href="search-found.html" title="SEARCH FOUND" itemprop="url">SEARCH FOUND</a></li>
-                                        <li><a href="search-not-found.html" title="SEARCH NOT FOUND" itemprop="url">SEARCH NOT FOUND</a></li>
-                                        <li><a href="coming-soon.html" title="COMING SOON" itemprop="url">COMING SOON</a></li>
-                                        <li><a href="login-register.html" title="LOGIN & REGISTER" itemprop="url">LOGIN & REGISTER</a></li>
-                                        <li><a href="price-table.html" title="PRICE TABLE" itemprop="url">PRICE TABLE</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"><a href="#" title="GALLERY" itemprop="url">GALLERY</a>
-                                    <ul class="sub-dropdown">
-                                        <li><a href="gallery.html" title="FOOD GALLERY" itemprop="url">FOOD GALLERY</a></li>
-                                        <li><a href="gallery-detail.html" title="GALLERY DETAIL" itemprop="url">GALLERY DETAIL</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="register-reservation.html" title="REGISTER RESERVATION" itemprop="url">REGISTER RESERVATION</a></li>
-                                <li><a href="how-it-works.html" title="HOW IT WORKS" itemprop="url">HOW IT WORKS</a></li>
-                                <li><a href="dashboard.html" title="USER PROFILE" itemprop="url">USER PROFILE</a></li>
-                                <li><a href="about-us.html" title="ABOUT US" itemprop="url">ABOUT US</a></li>
-                                <li><a href="food-detail.html" title="FOOD DETAIL" itemprop="url">FOOD DETAIL</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="contact.html" title="CONTACT US" itemprop="url"><span class="yellow-clr">REAL FOOD</span>CONTACT US</a></li>
-                    </ul>
-                </div>
-                <div class="topbar-register">
-                    <a class="log-popup-btn" href="#" title="Login" itemprop="url">LOGIN</a> / <a class="sign-popup-btn" href="#" title="Register" itemprop="url">REGISTER</a>
-                </div>
-                <div class="social1">
-                    <a href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook-square"></i></a>
-                    <a href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
-                    <a href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
-                </div>
-                <div class="register-btn">
-                    <a class="yellow-bg brd-rd4" href="register-reservation.html" title="Register" itemprop="url">REGISTER RESTAURANT</a>
-                </div>
-            </div><!-- Responsive Menu -->
-        </div><!-- Responsive Header -->
-
-        <section>
-            <div class="block">
-                <div class="fixed-bg" style="background-image: url(assets/images/topbg.jpg);"></div>
-                <div class="page-title-wrapper text-center">
-                    <div class="col-md-12 col-sm-12 col-lg-12">
-                        <div class="page-title-inner">
-                            <h1 itemprop="headline">Blog Detail With No Sidebar</h1>
-                                <span>A Greate Restaurant Website</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
 
         <div class="bread-crumbs-wrapper">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#" title="" itemprop="url">Home</a></li>
-                    <li class="breadcrumb-item active">Blog Detail With No Sidebar</li>
+                    <li class="breadcrumb-item"><a href="{{url('chefBlogs')}}" title="" itemprop="url">Blogs</a></li>
+                    <li class="breadcrumb-item active">Blog Detail </li>
                 </ol>
             </div>
         </div>
@@ -298,56 +134,29 @@
                             <div class="sec-box">
     							<div class="col-md-12 col-sm-12 col-lg-12">
     								<div class="blog-detail-wrapper">
-    									<div class="blog-detail-thumb wow fadeIn" data-wow-delay="0.2s">
-    										<img src="assets/images/resource/blog-detial-img2-1.jpg" alt="blog-detial-img2-1.jpg" itemprop="image">
-    									</div>
+    									
     									<div class="blog-detail-info">
-    										<span class="post-detail-date red-clr"><i class="fa fa-clock-o"></i> August 10, 2017</span>
+    										<span class="post-detail-date red-clr"><i class="fa fa-clock-o"></i> {{$chefBlog->updated_at}}</span>
     										<div class="post-meta">
-    											<span><i class="fa fa-eye red-clr"></i> 95 Views</span>
-    											<span><i class="fa fa-comment-o red-clr"></i> 5 Comments</span>
+    											<!--<span><i class="fa fa-eye red-clr"></i>{{ $chefBlog->views}} Views</span>-->
+    											<!--<span><i class="fa fa-comment-o red-clr"></i> {{$chefBlog->comments}} Comments</span>-->
     										</div>
     									</div>
-    									<h1 itemprop="headline">Tried Their Amazing Grilled Ham</h1>
-    									<p itemprop="description">Rennie White, an advertising manager in New York City, leaves for work 10 minutes later these days because she no longer has to wait in line for coffee at a Dunkin' Donuts outlet. Instead, she preorders coffee by sending a text message from her cellphone on the way to work. "I can get off the train and get the coffee and not break my flow," Ms. White says</p>
-    									<blockquote><p itemprop="headline">Michel ivauedaus rutrum mi utercture aliquam In habitasse platore dictumst. Integer sagittis  vulputate  similique sunt in culpa qui officia deserunt.</p></blockquote>
-    									<p itemprop="description">Rennie White, an advertising manager in New York City, leaves for work 10 minutes later these days because she no longer has to wait in line for coffee at a Dunkin' Donuts outlet. Instead, she preorders coffee by sending a text message from her cellphone on the way to work. "I can get off the train and get the coffee and not break my flow," Ms. White says</p>
-    									<p class="wow fadeIn" data-wow-delay="0.2s" itemprop="description"><a class="alignnone" href="assets/images/resource/blog-detial-img2-2.jpg" data-fancybox="gallery" title="" itemprop="url"><img src="assets/images/resource/blog-detial-img2-2.jpg" alt="blog-detial-img2-2.jpg" itemprop="image"></a></p>
-    									<p itemprop="description"><span class="big-letter">R</span>ennie White, an advertising manager in New York City, leaves for work 10 minutes later these days because she no longer has to wait in line for coffee at a Dunkin' Donuts outlet. Instead, she preorders coffee by sending a text message from her cellphone <a class="alignnone wow fadeIn" data-wow-delay="0.2s" href="assets/images/resource/blog-detial-img2-3.jpg" data-fancybox="gallery" title="" itemprop="url"><img src="assets/images/resource/blog-detial-img2-3.jpg" alt="blog-detial-img2-3.jpg" itemprop="image"></a> Ennie White, an advertising manager in New York City, leaves for work 10 minutes later these days because she no longer has to wait in line for coffee at a Dunkin' Donuts outlet. Instead, she preorders coffee by sending a text message from her cellphone on the way to work. "I can get off the train and get the coffee and not break my flow," Ms. White says</p>
-    									<div class="post-tags red-clr">
-    										<span>Tags:</span>
-    										<a href="#" title="" itemprop="url">#fish</a>,<a href="#" title="" itemprop="url">#pasta</a>,<a href="#" title="" itemprop="url">#soups</a>
-    									</div>
-    									<div class="post-cate red-clr">
-    										<span>Category:</span>
-    										<a href="#" title="Italian cuisine" itemprop="url">Italian cuisine</a>
-    									</div>
-    									<div class="post-share">
-    										<span>Share:</span>
-    										<a class="brd-rd2" href="#" title="Facebook" itemprop="url" target="_blank"><i class="fa fa-facebook"></i></a>
-    										<a class="brd-rd2" href="#" title="Twitter" itemprop="url" target="_blank"><i class="fa fa-twitter"></i></a>
-    										<a class="brd-rd2" href="#" title="Pinterest" itemprop="url" target="_blank"><i class="fa fa-pinterest"></i></a>
-    										<a class="brd-rd2" href="#" title="Google Plus" itemprop="url" target="_blank"><i class="fa fa-google-plus"></i></a>
-    										<a class="brd-rd2" href="#" title="Linkedin" itemprop="url" target="_blank"><i class="fa fa-linkedin"></i></a>
-    										<a class="brd-rd2" href="#" title="Vimeo" itemprop="url" target="_blank"><i class="fa fa-vimeo"></i></a>
-    									</div>
-    									<div class="post-next-prev">
-    										<a class="prev-post" href="#" title="Previous Post" itemprop="url"><i class="fa fa-angle-left"></i> PREV</a> -
-    										<a class="next-post" href="#" title="Next Post" itemprop="url">NEXT <i class="fa fa-angle-right"></i></a>
-    									</div>
-    								</div>
-    								<div class="author-info-wrapper">
-    									<h3 class="title4" itemprop="headline"><span class="sudo-bottom sudo-bg-red">About</span> The Author</h3>
-    									<div class="author-box">
-    										<img class="brd-rd50" src="assets/images/resource/author-img.jpg" alt="author-img.jpg" itemprop="image">
+                                        <h1 itemprop="headline">{{$chefBlog->blog_title}}</h1><br><br>
+                                       
     										<div class="author-info">
-    											<h4 itemprop="headline"><a href="#" title="" itemprop="url">Mr.John Cristopher</a></h4>
-    											<p itemprop="description">Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. uni harum quidem sed rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihilares impedit quo repellendus eligendi optio cumque nihilare impedit quo minus id quod maxime.</p>
-    											<a class="red-clr" href="#" title="Webinane" itemprop="url" target="_blank">webinane.com</a>
-    										</div>
-    									</div>
-    								</div>
-    								<div class="comments-wrapper">
+    											<a class="red-clr" href="{{url('products_found/chefs_products/'.$chef->id)}}" title="Webinane" itemprop="url" target="_blank"><span style="color: black">More About</span> {{$chef->project_name}}</a>
+    										</div><br>
+    								
+    									<p itemprop="description">{{$chefBlog->blog_body}}</p>
+    									
+                                    </div>
+                                    
+    								<!--<div class="author-info-wrapper">
+                                    <h3 class="title4" href="" itemprop="headline">More About </h3>
+    								</div>-->
+                                    <!--
+                                    <div class="comments-wrapper">
     									<h3 class="title4" itemprop="headline"><span class="sudo-bottom sudo-bg-red">Comm</span>ents (2)</h3>
     									<ul class="comments-thread">
     										<li>
@@ -397,6 +206,7 @@
     									</form>
     								</div>
     							</div>
+                                    -->
                             </div><!-- Section Box -->
                             </div>
                         </div>

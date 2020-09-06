@@ -86,7 +86,7 @@ class UserController extends Controller
             $user = User::find( Auth::user()->id);
         }
 
-        return view('UserProfile')->with('userOrders',$user->orders);
+        return view('UserProfile')->with('user',$user)->with('userOrders',$user->orders);
     }
 
 }

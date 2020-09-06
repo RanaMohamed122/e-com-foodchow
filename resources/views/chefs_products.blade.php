@@ -35,6 +35,11 @@
     
                                     <ul class="dropdown-menu" style="min-width:10px; margin-left:-8%">
                                         <li>
+                                            <a href="{{ url('UserProfile') }}">
+                                                Profile
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="{{ route('logout') }}" style="background-color: snow;font-weight: 500;"
                                                 onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
@@ -50,7 +55,7 @@
                             @endif
                         </div>
                         <div class="social1" style="margin-top: 5px;width: 3%;margin-right: -5%;">
-                            <a href="#" title="Facebook" itemprop="url" target="_blank"><img src={{asset("assets/images/icon3.png")}}></a>
+                            <a href="/cart" title="Facebook" itemprop="url" target="_blank"><img src={{asset("assets/images/icon3.png")}}></a>
                            
                         </div>
                     </div>                
@@ -78,6 +83,8 @@
                                             @endforeach
                                         </ul>
                                     <li><a href={{asset("/contact-us")}} title="CONTACT US" itemprop="url">Contact Us</a></li>
+                                    <li class="menu-item-has-children"><a href={{asset("/chefBlogs")}} title="PAGES" itemprop="url">Blogs</a></li>
+
                                 </ul>
                                 
                             </div>
@@ -126,8 +133,8 @@
                                                         </ul>
                                                     </div>
                                                     <div class="restaurant-detail-title">
-                                                        @foreach ($products as $pro)
-                                                        <h1 itemprop="headline">{{$pro->project_name}}</h1>
+                                                        
+                                                        <h1 itemprop="headline">{{$chef->project_name}}</h1>
                                                     
                                                         <div class="rating-wrapper">
                                                             <a class="gradient-brd brd-rd2" href="#" title="" itemprop="url"><i class="fa fa-star"></i> Rate <i>4.0</i></a>
@@ -170,7 +177,7 @@
                                                             <li class="active"><a href="#tab1-1" data-toggle="tab"><i class="fa fa-cutlery"></i> Menu</a></li>
                                                             <li><a href="#tab1-2" data-toggle="tab"><i class="fa fa-picture-o"></i> Gallery</a></li>
                                                             <li><a href="#tab1-3" data-toggle="tab"><i class="fa fa-star"></i> Reviews</a></li>
-                                                            <li><a href="#tab1-5" data-toggle="tab"><i class="fa fa-info"></i> Chef Info</a></li>
+                                                            
                                                         </ul>
                                                         <div class="tab-content">
                                                             <div class="tab-pane fade in active" id="tab1-1">
@@ -182,7 +189,7 @@
                                                                     
                                                                     <ul class="dishes-list">
                                                                      
-
+                                                                        @foreach ($products as $pro)
                                                                         <li class="wow fadeInUp" data-wow-delay="0.1s">
                                                                             <div class="featured-restaurant-box">
                                                                                 <div class="featured-restaurant-thumb">
@@ -253,7 +260,7 @@
                                                                                 <img class="brd-rd50" src="{{ asset('/assets/images/resource/'.$review->user_image) }}" alt="review-img3.jpg" itemprop="image" style=" width: 10%;">
                                                                                 <div class="comment-info">
                                                                                     <h4 itemprop="headline"><a href="#" title="" itemprop="url">{{$review->user_name}}</a></h4>
-                                                                                    <p itemprop="description">{{$review->review}}</p>
+                                                                                    <p itemprop="description" style="width: 100%;max-width:100%">{{$review->review}}</p>
                                                                                     <span class="customer-rating">
                                                                                         <i class="fa fa-star-o"></i>
                                                                                         <i class="fa fa-star-o"></i>

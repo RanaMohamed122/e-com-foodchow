@@ -111,8 +111,37 @@ $(document).ready(function() {
         }
     });
 
+    $("#add_order").validate({
+        rules: {
+            user_name: {
+                required: true
+            },
+            user_email: {
+                required: true,
+                email: true
+            },
+            phone: {
+                required: true,
+                //minlength: 6,
+                maxlength: 11
+            },
+            address: {
+                required: true,
+            },
+            errorClass: "help-inline",
+            errorElement: "span",
+            highlight: function(element, errorClass, validClass) {
+                $(element).parents('.control-group').addClass('error');
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).parents('.control-group').removeClass('error');
+                $(element).parents('.control-group').addClass('success');
+            }
+        }
+    });
+
     // Chef Validation
-    $("#add_product").validate({
+    $("#add_chef").validate({
         rules: {
             category_id: {
                 required: true
@@ -238,6 +267,8 @@ $(document).ready(function() {
             $(element).parents('.control-group').addClass('success');
         }
     });
+    //cash vaidations
+
 
     /*$("#delCat").click(function(){
 		if(confirm('Are you sure to delete the Category?')){

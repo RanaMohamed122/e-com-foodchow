@@ -32,7 +32,6 @@
                 <tr>
                   <th>Blog ID</th>
                   <th>Chefs ID</th>
-                  <th>Project Name</th>
                   <th>Blog Title</th>
                   <th>Blog Brief</th>
                   <th>Blog Body</th>
@@ -44,7 +43,6 @@
                 <tr class="gradeX">
                   <td class="center">{{ $chefsBlog->id }}</td>
                   <td class="center">{{ $chefsBlog->chef_id }}</td>
-                  <td class="center">{{ $chefsBlog->project_name }}</td>
                   <td class="center">{{ $chefsBlog->blog_title }}</td>
                   <td class="center">{{ $chefsBlog->blog_brief }}</td>
                   <td class="center">{{ $chefsBlog->blog_body }}</td>

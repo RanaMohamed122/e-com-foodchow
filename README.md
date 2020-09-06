@@ -1,14 +1,17 @@
-# make-admin-panel-in-laravel-5.6
-Make E-commerce website in Laravel 5.6 | Make Admin Panel in Laravel 5.6
+# FoodChow e-comm website
 
-Uptill Part 9: Make E-commerce website in Laravel 5.6 | Part 20: Make Admin Panel in Laravel 5.6
+FoodChow website offers online homemade food home delivery services at best prices customer’s local chefs. Their aim is to connect foodies with chefs, who make delicious and authentic food. Customers can choose from a variety of categories and have their food delivered to their doorstep.
 
-Make Admin Panel / E-commerce in Laravel 5.6 / 5.7 / 5.8 :- 
-https://www.youtube.com/playlist?list=PLLUtELdNs2ZY5drPxIWzpq5crhantlzp7
+Languages used:
+HTML
+CSS
+Javascript                                                  
+JQUERY
+PHP 
 
-Make E-commerce Website in Laravel 6 / Laravel 7 (Including LTE Admin Panel) :-
-https://www.youtube.com/playlist?list=PLLUtELdNs2ZaHaFmydqjcQ-YyeQ19Cd6u
-
+Frameworks used:
+Bootstrap
+Laravel 
 
 
 

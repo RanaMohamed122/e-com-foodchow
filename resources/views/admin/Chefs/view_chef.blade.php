@@ -53,7 +53,7 @@
                   <td class="center">{{ $chef->chef_email }}</td>
                   <td class="center">
                     @if(!empty($chef->image))
-                    <img src="{{ asset('/images/backend_images/product/small/'.$chef->image) }}" style="width:50px;">
+                    <img src="{{ asset('/assets/images/resource/'.$chef->image) }}" style="width:50px;">
                     @endif
                   </td>
                   <td class="center">

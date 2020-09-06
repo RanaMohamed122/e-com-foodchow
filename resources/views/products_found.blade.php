@@ -34,6 +34,12 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <a href="{{ url('UserProfile') }}">
+                                            Profile
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -49,7 +55,7 @@
                         @endif
                     </div>
                     <div class="social1" style="margin-top: 5px;width: 3%;margin-right: -5%;">
-                        <a href="#" title="Facebook" itemprop="url" target="_blank"><img src={{asset("assets/images/icon3.png")}}></a>
+                        <a href="/cart" title="Facebook" itemprop="url" target="_blank"><img src={{asset("assets/images/icon3.png")}}></a>
                        
                     </div>
                 </div>                
@@ -77,6 +83,8 @@
                                         @endforeach
                                     </ul>
                                 <li><a href={{asset("/contact-us")}} title="CONTACT US" itemprop="url">Contact Us</a></li>
+                                <li class="menu-item-has-children"><a href={{asset("/chefBlogs")}} title="PAGES" itemprop="url">Blogs</a></li>
+
                             </ul>
                             
                         </div>
@@ -89,6 +97,7 @@
 
         
 
+
         <div class="bread-crumbs-wrapper">
             <div class="container">
                 <ol class="breadcrumb">
@@ -98,16 +107,21 @@
                 </ol>
             </div>
         </div>
+     
+              
+                   
 
         <section>
+               
             <div class="block gray-bg bottom-padd210 top-padd30">
                 <div class="container">
                     <div class="row" style= "margin-left:0px ;margin-right:0px">
+                            
                         <div class="col-md-12 col-sm-12 col-lg-12">
                             <div class="sec-box" style = "margin-top:7%;margin-left:-6%;width: 120%;">
                                 <div class="sec-wrapper">
                                     <div class="row">
-                                        <div class="col-md-2 col-sm-2 col-lg-2">
+                                       <!-- <div class="col-md-2 col-sm-2 col-lg-2">
                                             <div class="sidebar left">
                                                 <div class="widget style2 Search_filters wow fadeIn" data-wow-delay="0.2s">
                                                     <h4 class="widget-title2 sudo-bg-red" itemprop="headline">Categoires</h4>
@@ -120,36 +134,27 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <div class="widget style2 quick_filters wow fadeIn" data-wow-delay="0.2s">
-                                                    <h4 class="widget-title2 sudo-bg-red" itemprop="headline">Quick Filters</h4>
-                                                    <div class="widget-data">
-                                                        <ul>
-                                                            <li><span class="radio-box"><input type="radio" name="filter" id="filt1-1"><label for="filt1-1">Promotions</label></span></li>
-                                                            <li><span class="radio-box"><input type="radio" name="filter" id="filt1-2"><label for="filt1-2">Bookmarked</label></span></li>
-                                                            <li><span class="radio-box"><input type="radio" name="filter" id="filt1-3"><label for="filt1-3">Pure veg</label></span></li>
-                                                            <li><span class="radio-box"><input type="radio" name="filter" id="filt1-4"><label for="filt1-4">Free Delivery</label></span></li>
-                                                            <li><span class="radio-box"><input type="radio" name="filter" id="filt1-5"><label for="filt1-5">Online Payments</label></span></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
+                                              
 
                                                 
                                              
                                             </div>
 
-                                        </div>
+                                        </div> -->
+                                       
                                         @foreach($products as $product)
-                                        <div class="col-md-5 col-sm-5 col-lg-5">
+                                        
+                                        <div class="col-md-4 col-sm-4 col-lg-4">
                                             <div class="sec-box" >
                                                 <div class="remove-ext">
                                                     <div class="row">
                                                         <div class="popular-dish-box style2 wow fadeIn" data-wow-delay="0.2s">
                                                             <div class="popular-dish-thumb">
-                                                                <a href="food-detail.html" title="" itemprop="url"><img src={{ asset("/assets/images/resource/popular-dish-img2.jpg")}} alt="popular-dish-img1.jpg" itemprop="image"></a>
+                                                                <a href="food-detail.html" title="" itemprop="url"><img src="{{asset('/assets/images/resource/'.$product->image)}}" alt="popular-dish-img1.jpg" itemprop="image"  /></a>
                                                                 <span class="post-rate yellow-bg brd-rd2"><i class="fa fa-star-o"></i> 4.25</span>
                                                             </div>
                                                             <div class="popular-dish-info">
-                                                                <h4 itemprop="headline"><a href="{{ url('/products_found/chefs_products/'.$product->chef_id) }}" title="" itemprop="url">{{$product->product_name}}</a></h4>
+                                                                <h4 itemprop="headline"><a  title="" itemprop="url">{{$product->product_name}}</a></h4>
                                                             <p itemprop="description">{{$product->description}}</p>
                                                                 <span class="price">{{$product->price}} L.E</span>
                                                                 <a class="brd-rd4 " href="{{ url('/chefs_products/cart/'.$product->id)}}" title="Order Now" itemprop="url">Add to cart</a>

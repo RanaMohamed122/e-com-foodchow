@@ -34,6 +34,12 @@
     
                                     <ul class="dropdown-menu" style="min-width:10px; margin-left:-8%">
                                         <li>
+                                            <a href="{{ url('UserProfile') }}">
+                                                Profile
+                                            </a>
+                                        </li>
+                                        
+                                        <li>
                                             <a href="{{ route('logout') }}" style="background-color: snow;font-weight: 500;"
                                                 onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
@@ -77,6 +83,8 @@
                                             @endforeach
                                         </ul>
                                     <li><a href={{asset("/contact-us")}} title="CONTACT US" itemprop="url">Contact Us</a></li>
+                                    <li class="menu-item-has-children"><a href={{asset("/chefBlogs")}} title="PAGES" itemprop="url">Blogs</a></li>
+
                                 </ul>
                                 
                             </div>

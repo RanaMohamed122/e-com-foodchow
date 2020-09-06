@@ -33,12 +33,7 @@
                       <input type="text" name="chef_id" id="chef_id" value="{{ $chefBlogDetails->chef_id }}">
                     </div>
                   </div>
-              <div class="control-group">
-                <label class="control-label">Name</label>
-                <div class="controls">
-                  <input type="text" name="project_name" id="project_name" value="{{ $chefBlogDetails->project_name }}">
-                </div>
-              </div>
+              
               <div class="control-group">
                 <label class="control-label">Blog Title</label>
                 <div class="controls">

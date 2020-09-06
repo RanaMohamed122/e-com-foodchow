@@ -27,11 +27,10 @@ Route::get('/categories/products_found/{id}','CategoriesController@ViewProduct')
 
 Route::get('/products_found/chefs_products/{id}','CategoriesController@ViewChefProduct');
 
-Route::get('/chefs_products', function() {
-    return view('chefs_products');
-});
 
+//blog routes
 Route::get('/chefBlogs', 'ChefBlogsController@viewBlogs');
+Route::get('/blogDetail/{id}', 'ChefBlogsController@viewBlogDetail');
 
 Route::match(['get','post'],'/cart', 'CategoriesController@ViewCart');
 Route::match(['get', 'post'], '/admin','AdminController@login');

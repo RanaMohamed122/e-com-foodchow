@@ -52,13 +52,12 @@ class CategoriesController extends Controller
         $categories = Category::all();
         $products = Product::all();
         $chef = Chef::find($id);
-
         $reviews = '';
         if(!(empty(Review::all()))){
             $reviews = Review::all();
         }
 
-        return view('chefs_products')->with('chef_id',$id)->with('products', $chef->products)->with('reviews', $chef->reviews)->with('categories',$categories);
+        return view('chefs_products')->with('chef',$chef)->with('chef_id',$id)->with('products', $chef->products)->with('reviews', $chef->reviews)->with('categories',$categories);
 
     }
 
@@ -172,10 +171,11 @@ class CategoriesController extends Controller
     
     public function confirm_order1(Request $request){
         $order = new Order;
+        $data = $request->all();
 
         if(empty(Auth::user()->id)){
             if($request->isMethod('post')){
-                $data = $request->all();
+                //$data = $request->all();
                 $order->user_name = $data['user_name'];
                 $order->user_email = $data['user_email'];
                 $order->phone = $data['phone'];	
@@ -213,7 +213,11 @@ class CategoriesController extends Controller
         }
             
         $order->total = $total;	
-        $order->description	= '';
+        if(empty($data['description'])){
+            $data['description'] = '';
+        }
+        $order->description	= $data['description'];
+
         $order->delivery_fees = 50;
         $order->payment_method = 'cash';
 
